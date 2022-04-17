@@ -1,5 +1,6 @@
 let $ = (selector) => document.querySelector(selector)
-
+let getData = await axios.get('https://npbe.ramzihijjawi.me/');
+let getDataJSON = "";
 function changeIfChanged(el, content) {
   if (el.innerHTML !== content) {
     el.innerHTML = content

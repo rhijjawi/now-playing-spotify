@@ -11,6 +11,8 @@ html * {
   transition: all 0.2s;
 }
 
+
+
 html,
 body {
   height: 100%;
@@ -73,6 +75,20 @@ a:hover {
 
 #title:hover {
   text-decoration: underline solid var(--text-primary) 4px;
+}
+
+.progress {
+  width: 100%;
+  background-color: var(--background);
+  margin: 0px;
+  position: absolute;
+  bottom: 0px;
+}
+
+.progressBar {
+  width: 1%;
+  height: 2px;
+  background-color: red;
 }
 
 .track-info {

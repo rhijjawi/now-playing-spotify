@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cnnd's spotify</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
+  <script src="ts/main.ts" type="module" defer></script>
+  <!-- HTML Meta Tags -->
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <meta name="description" content="A webapp to show my current Spotify track">
+  <!-- Facebook Meta Tags -->
+  <meta property="og:url" content="https://np.cnnd.dev/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="cnnd's spotify">
+  <meta property="og:description" content="A webapp to show my current Spotify track">
+  <meta property="og:image" content="https://i.imgur.com/14OExH6.png">
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="twitter:domain" content="">
+  <meta property="twitter:url" content="https://np.cnnd.dev/">
+  <meta name="twitter:title" content="cnnd's spotify">
+  <meta name="twitter:description" content="A webapp to show my current Spotify track">
+  <meta name="twitter:image" content="https://i.imgur.com/14OExH6.png">
+</head>
+
+<body>
+  <div class="container">
+    <span id="status">Loading data</span>
+    <img src="./unknown.svg" draggable='false' alt="Album Art" id="album-art">
+    <div class="track-info">
+      <span id="title">title</span>
+      <span id="album"><span class="muted">on</span> album</span>
+      <span id="artist"><span class="muted">by</span> artist</span>
+    </div>
+  </div>
+  <div class="footer"><span>made with 💖 by <a href='//cnnd.co.uk' target='_blank'
+        rel='noopener noreferrer'>cnnd</a></span></div>
+</body>
+
+</html>

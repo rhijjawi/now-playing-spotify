@@ -89,6 +89,7 @@ a:hover {
   width: 1%;
   height: 2px;
   background-color: red;
+  transition: width 0ms;
 }
 
 .track-info {

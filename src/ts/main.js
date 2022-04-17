@@ -2,9 +2,6 @@ let $ = (selector) => document.querySelector(selector)
 let getData = await axios.get('https://npbe.ramzihijjawi.me/');
 let getDataJSON = getData.data
 let bar = document.getElementById('progressBar');
-bar.style.width = `${(getDataJSON.progress_ms/getDataJSON.item.duration_ms)*100}%`
-bar.style.transition = `width ${getDataJSON.progress_ms}ms`;
-bar.style.width = '100%';
 
 function changeIfChanged(el, content) {
   if (el.innerHTML !== content) {
@@ -53,5 +50,6 @@ const interval = setInterval(async function() {
     changeIfChanged($('#status'), 'Paused')
     addClass($('#album-art'), 'pause-spin')
   }
-  
+  bar = document.getElementById('progressBar')
+  bar.style.width = `${(getDataJSON.progress_ms/getDataJSON.item.duration_ms)*100}%`
 }, 1000)

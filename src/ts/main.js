@@ -48,4 +48,6 @@ const interval = setInterval(async function() {
     changeIfChanged($('#status'), 'Paused')
     addClass($('#album-art'), 'pause-spin')
   }
+  bar = document.getElementById('progressBar')
+  bar.style.width = `${(getDataJSON.progress_ms/getDataJSON.item.duration_ms)*100}%`
 }, 1000)

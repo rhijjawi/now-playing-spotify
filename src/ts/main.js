@@ -27,7 +27,8 @@ function removeClass(el, className) {
 const interval = setInterval(async function() {
   getData = await axios.get('https://npbe.ramzihijjawi.me/')
   getDataJSON = getData.data
-  let playingStatement = `Playing on <span class="bold">${getDataJSON['device']['name']}</span>`
+  let volume = `@ ${getDataJSON.device.volume_percent}`
+  let playingStatement = `Playing on <span class="bold">${getDataJSON['device']['name']}</span> ${volume}`
   changeImageIfChanged($('#album-art'), getDataJSON.item.album.images[0].url)
   changeIfChanged($('#title'), `<a href="${getDataJSON.item.external_urls.spotify}">${getDataJSON.item.name}</a>`)
   changeIfChanged(

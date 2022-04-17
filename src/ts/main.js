@@ -24,7 +24,7 @@ function removeClass(el, className) {
   }
 }
 const interval = setInterval(async function() {
-  getData = await axios.get('http://127.0.0.1:5000/np')
+  getData = await axios.get('https://npbe.ramzihijjawi.me/')
   getDataJSON = getData.data
   let playingStatement = `Playing on <span class="bold">${getDataJSON['device']['name']}</span>`
   changeImageIfChanged($('#album-art'), getDataJSON.item.album.images[0].url)

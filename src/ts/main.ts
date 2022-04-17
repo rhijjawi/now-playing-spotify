@@ -1,79 +1,49 @@
-import '../css/main.css'
-import io, { Socket } from 'socket.io-client'
+let $ = (selector) => document.querySelector(selector)
 
-type ListeningData = {
-  device: string
-  trackName: string
-  trackUrl: string
-  trackProgress: number
-  trackDuration: number
-  albumName: string
-  artistName: string
-  artistUrl: string
-  albumImageUrl: string
-  albumUrl: string
-  playing: boolean
-}
-
-let $ = (selector: string) => document.querySelector(selector)
-
-function changeIfChanged(el: Element, content: string) {
+function changeIfChanged(el, content) {
   if (el.innerHTML !== content) {
     el.innerHTML = content
   }
 }
 
-function changeImageIfChanged(el: HTMLImageElement, url: string) {
+function changeImageIfChanged(el, url) {
   if (el.src !== url) {
     el.src = url
   }
 }
 
-function addClass(el: Element, className: string) {
+function addClass(el, className) {
   if (!el.classList.contains(className)) {
     el.classList.add(className)
   }
 }
 
-function removeClass(el: Element, className: string) {
+function removeClass(el, className) {
   if (el.classList.contains(className)) {
     el.classList.remove(className)
   }
 }
-
-// @ts-ignore
-let sock: Socket
-
-if (process.env.NODE_ENV !== 'production') {
-  sock = io('http://localhost:3000', {
-    path: '/io',
-  })
-} else {
-  sock = io('https://npbe.ramzihijjawi.me', {
-    path: '/io',
-  })
-}
-
-sock.on('update', (data: string) => {
-  let ld: ListeningData = JSON.parse(data)
-  let playingStatement = `Playing on <span class="bold">${ld['device']}</span>`
-  changeImageIfChanged($('#album-art') as HTMLImageElement, ld.albumImageUrl)
-  changeIfChanged($('#title'), `<a href="${ld.trackUrl}">${ld.trackName}</a>`)
+const interval = setInterval(async function() {
+  getData = await axios.get('http://127.0.0.1:5000/np')
+  getDataJSON = getData.data
+  let playingStatement = `Playing on <span class="bold">${getDataJSON['device']['name']}</span>`
+  changeImageIfChanged($('#album-art'), getDataJSON.item.album.images[0].url)
+  changeIfChanged($('#title'), `<a href="${getDataJSON.item.external_urls.spotify}">${getDataJSON.item.name}</a>`)
   changeIfChanged(
     $('#album'),
-    `<span class="muted">on</span> <a href="${ld.albumUrl}">${ld.albumName}</a>`,
+    `<span class="muted">on</span> <a href="${getDataJSON.item.album.external_urls.spotify}">${getDataJSON.item.album.name}</a>`,
   )
   changeIfChanged(
     $('#artist'),
-    `<span class="muted">by</span> <a href="${ld.artistUrl}">${ld.artistName}</a>`,
+    `<span class="muted">by</span> <a href="${getDataJSON.item.album.artists[0].external_urls.spotify}">${getDataJSON.item.album.artists[0].name}</a>`,
   )
-  if (ld.playing) {
+  if (getDataJSON.is_playing) {
     changeIfChanged($('#status'), playingStatement)
     addClass($('#album-art'), 'spin')
     removeClass($('#album-art'), 'pause-spin')
   }
-  if (!ld.playing) {
+  if (!getDataJSON.is_playing) {
     changeIfChanged($('#status'), 'Paused')
     addClass($('#album-art'), 'pause-spin')
   }
-})
+}, 1000)

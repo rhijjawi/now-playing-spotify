@@ -1,4 +1,4 @@
-import './css/main.css'
+import '../css/main.css'
 import io, { Socket } from 'socket.io-client'
 
 type ListeningData = {

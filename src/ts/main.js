@@ -63,6 +63,7 @@ const interval = setInterval(async function() {
   
   let text = document.getElementById('session')
   let session_token = text.value
+  let currentSong = '';
   if (session_token == '') {}
   else {spotify = true}
   if (spotify == true) {

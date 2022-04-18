@@ -2,6 +2,8 @@ let $ = (selector) => document.querySelector(selector)
 let getData = await axios.get('https://npbe.ramzihijjawi.me/');
 let getDataJSON = getData.data
 let bar = document.getElementById('progressBar');
+let session_token;
+let spotify = false;
 
 function changeIfChanged(el, content) {
   if (el.innerHTML !== content) {

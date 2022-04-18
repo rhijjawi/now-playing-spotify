@@ -1,7 +1,9 @@
 let session_token;
 let spotify = false;
 const _ = setInterval(async function() {
-if (session_token == undefined) {
+let text = document.getElementById('session')
+let session_token = text.value
+if (session_token == '') {
   console.log("Spotify not initialised")
 }
 else {let spotify = true}
@@ -9,6 +11,8 @@ else {let spotify = true}
                       
 const i = setInterval(async function() {
 if (spotify == true) {
+  let text = document.getElementById('session')
+  let session_token = text.value
   let config = {
     headers: {
         Authorization: `Bearer ${session_token}`,

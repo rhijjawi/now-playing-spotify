@@ -30,10 +30,7 @@ const interval = setInterval(async function() {
   getData = await axios.get('https://npbe.ramzihijjawi.me/')
   getDataJSON = getData.data
   if(getDataJSON.hasOwnProperty('status')){
-  if (getDataJSON.status == 'not_playing') {
-    
-} else {}
-}
+  if (getDataJSON.status == 'not_playing') {} else {}}
   else {
   let volume = `@ ${getDataJSON.device.volume_percent}% volume`
   let playingStatement = `Playing on <span class="bold">${getDataJSON['device']['name']}</span> ${volume}`
@@ -58,5 +55,5 @@ const interval = setInterval(async function() {
   }
   bar = document.getElementById('progressBar')
   bar.style.width = `${(getDataJSON.progress_ms/getDataJSON.item.duration_ms)*100}%`
-}, 1000)
-}
+}}, 1000)
+

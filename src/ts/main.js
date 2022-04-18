@@ -55,5 +55,27 @@ const interval = setInterval(async function() {
   }
   bar = document.getElementById('progressBar')
   bar.style.width = `${(getDataJSON.progress_ms/getDataJSON.item.duration_ms)*100}%`
+  
+  
+  
+  let text = document.getElementById('session')
+  let session_token = text.value
+  if (session_token == '') {}
+  else {spotify = true}
+  if (spotify == true) {
+
+  let text = document.getElementById('session')
+  let session_token = text.value
+  let config = {
+    headers: {
+        'Content-Type' : 'application/json'
+    }
+  }
+  let data = {"session": `${session_token}`, "context_uri": "spotify:album:5ht7ItJgpBH7W6vJ5BqpPr","offset": {"position": 5},"position_ms": 0}
+  await axios.put('https://npbe.ramzihijjawi.me/song', data, config)
+}
+
+  
+  
 }}, 1000)
 

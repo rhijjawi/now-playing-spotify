@@ -30,6 +30,23 @@
   <meta name="twitter:image" content="https://nowplayingramzihijjawi.netlify.app/cover-picture.jpg">
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/kimmobrunfeldt/progressbar.js@1.1.0/dist/progressbar.min.js"></script>
+  <script>function prep() {
+  window.open('https://npbe.ramzihijjawi.me/login', '_blank');
+  let text = document.getElementById('session')
+  text.style.hidden = false
+  //let ico = document.getElementsByTagName('img')[1]
+
+  text.addEventListener("keyup", function(event) {
+  // Number 13 is the "Enter" key on the keyboard
+  if (event.keyCode === 13) {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    let session = text.val
+    text.style.hidden = true
+    
+  }
+});
+}</script>
 </head>
 
 <body>

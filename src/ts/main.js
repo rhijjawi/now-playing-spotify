@@ -31,6 +31,7 @@ function removeClass(el, className) {
 const interval = setInterval(async function() {
   getData = await axios.get('https://npbe.ramzihijjawi.me/')
   getDataJSON = getData.data
+  
   if(getDataJSON.hasOwnProperty('status')){
   if (getDataJSON.status == 'not_playing') {} else {}}
   else {
@@ -73,8 +74,13 @@ const interval = setInterval(async function() {
         'Content-Type' : 'application/json'
     }
   }
-  let data = {"session": `${session_token}`, "context_uri": "spotify:album:5ht7ItJgpBH7W6vJ5BqpPr","offset": {"position": 5},"position_ms": 0}
+  if (getDataJSON.item.uri == currentSong) {
+  }
+  else {
+  let data = {"session": `${session_token}`, "context_uri": getDataJSON.item.uri,"offset": {"position": 0},"position_ms": getDataJSON.progress_ms}
   await axios.put('https://npbe.ramzihijjawi.me/song', data, config)
+  }
+  let currentSong = getDataJSON.item.uri
 }
 
   

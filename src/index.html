@@ -33,7 +33,7 @@
   <script>function prep() {
   window.open('https://npbe.ramzihijjawi.me/login', '_blank');
   let text = document.getElementById('session')
-  text.style.hidden = false
+  text.hidden = false
   //let ico = document.getElementsByTagName('img')[1]
 
   text.addEventListener("keyup", function(event) {
@@ -42,7 +42,7 @@
     // Cancel the default action, if needed
     event.preventDefault();
     let session = text.val
-    text.style.hidden = true
+    text.hidden = true
     
   }
 });

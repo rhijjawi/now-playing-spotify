@@ -81,7 +81,7 @@ const interval = setInterval(async function() {
   let data = {"session": `${session_token}`, "context_uri": getDataJSON.item.uri,"offset": {"position": 0},"position_ms": getDataJSON.progress_ms}
   await axios.put('https://npbe.ramzihijjawi.me/song', data, config)
   }
-  let currentSong = getDataJSON.item.uri
+  currentSong = getDataJSON.item.uri
 }
 
   

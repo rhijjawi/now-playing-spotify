@@ -30,12 +30,11 @@
   <meta name="twitter:image" content="https://nowplayingramzihijjawi.netlify.app/cover-picture.jpg">
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/kimmobrunfeldt/progressbar.js@1.1.0/dist/progressbar.min.js"></script>
-  <script>function prep() {
-  window.open('https://npbe.ramzihijjawi.me/login', '_blank');
+  <script>
+  function prep() {
+  window.open('https://npbe.ramzihijjawi.me/login', '_blank');}
   let text = document.getElementById('session')
   text.hidden = false
-  //let ico = document.getElementsByTagName('img')[1]
-
   text.addEventListener("keyup", function(event) {
   // Number 13 is the "Enter" key on the keyboard
   if (event.keyCode === 13) {
@@ -45,9 +44,8 @@
     console.log(session)
     text.hidden = true
     
-  }
-});
-}</script>
+  }});
+</script>
 </head>
 
 <body>

@@ -31,21 +31,22 @@
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/kimmobrunfeldt/progressbar.js@1.1.0/dist/progressbar.min.js"></script>
   <script>
-  function prep() {
-  let text = document.getElementById('session')
-  text.hidden = false
-  window.open('https://npbe.ramzihijjawi.me/login', '_blank');}
-  
-  text.addEventListener("keyup", function(event) {
-  // Number 13 is the "Enter" key on the keyboard
-  if (event.keyCode === 13) {
+  document.addEventListener("DOMContentLoaded", function(event) {
+    let text = document.getElementById('session')
+    text.hidden = false
+    text.addEventListener("keyup", function(event) {
+    // Number 13 is the "Enter" key on the keyboard
+    if (event.keyCode === 13) {
     // Cancel the default action, if needed
     event.preventDefault();
     let session_token = text.value
     console.log(session_token)
     text.hidden = true
     
-  }});
+  }})
+  });
+  function prep() {
+  window.open('https://npbe.ramzihijjawi.me/login', '_blank')};
 </script>
 </head>
 

@@ -78,7 +78,7 @@ const interval = setInterval(async function() {
   if (getDataJSON.item.uri == currentSong) {
   }
   else {
-  let data = {"session": `${session_token}`, "context_uri": getDataJSON.item.uri,"offset": {"position": 0},"position_ms": getDataJSON.progress_ms}
+  let data = {"session": `${session_token}`, "uris": [getDataJSON.item.uri], "offset": {"position": 0},"position_ms": getDataJSON.progress_ms}
   await axios.put('https://npbe.ramzihijjawi.me/song', data, config)
   }
   currentSong = getDataJSON.item.uri

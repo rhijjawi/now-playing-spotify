@@ -1,5 +1,5 @@
 let session_token;
-
+let spotify = false;
 const _ = setInterval(async function() {
 if (session_token == undefined) {
   console.log("Spotify not initialised")

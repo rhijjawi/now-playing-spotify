@@ -1,4 +1,4 @@
-let $ = (selector) => document.querySelector(selector)
+let $ = (selector) => document.querySelector(selector);
 let getData = await axios.get('https://npbe.ramzihijjawi.me/');
 let getDataJSON = getData.data
 let bar = document.getElementById('progressBar');
@@ -74,7 +74,7 @@ const interval = setInterval(async function() {
 
 
 
-    let text = document.getElementById('session')
+    let text = document.getElementById('session');
     let session_token = text.value
     if (session_token == '') {}
     else {spotify = true}
@@ -83,7 +83,7 @@ const interval = setInterval(async function() {
     let text = document.getElementById('session')
     let session_token = text.value
 
-    if (currentSong !== getDataJSON.item.uri) {
+    if ((currentSong == getDataJSON.item.uri) == false) {
         let data = {"session": `${session_token}`, "uris": [getDataJSON.item.uri], "offset": {"position": 0},"position_ms": getDataJSON.progress_ms}
         await axios.put('https://npbe.ramzihijjawi.me/song', data, config)
     }

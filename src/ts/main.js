@@ -4,7 +4,8 @@ let getDataJSON = getData.data
 let bar = document.getElementById('progressBar');
 let session_token;
 let spotify = false;
-
+let config = {headers: {'Content-Type' : 'application/json','Authorisation' : 'Bearer 0000000-00000000-0000000'}}
+let stillPaused = false;
 function changeIfChanged(el, content) {
   if (el.innerHTML !== content) {
     el.innerHTML = content
@@ -28,6 +29,13 @@ function removeClass(el, className) {
     el.classList.remove(className)
   }
 }
+function pause() {
+  if (spotify == true) {
+    if (stillPaused == false) {
+    let data = {"session": `${session_token}`}
+    await axios.put('https://npbe.ramzihijjawi.me/pause', data, config)
+    stillPaused = true;
+  }}}
 const interval = setInterval(async function() {
   getData = await axios.get('https://npbe.ramzihijjawi.me/')
   getDataJSON = getData.data
@@ -48,6 +56,8 @@ const interval = setInterval(async function() {
     `<span class="muted">by</span> <a href="${getDataJSON.item.album.artists[0].external_urls.spotify}">${getDataJSON.item.album.artists[0].name}</a>`,
   )
   if (getDataJSON.is_playing) {
+    stillPaused = false;
+    
     changeIfChanged($('#status'), playingStatement)
     addClass($('#album-art'), 'spin')
     removeClass($('#album-art'), 'pause-spin')
@@ -55,6 +65,7 @@ const interval = setInterval(async function() {
   if (!getDataJSON.is_playing) {
     changeIfChanged($('#status'), 'Paused')
     addClass($('#album-art'), 'pause-spin')
+    pause();
   }
   bar = document.getElementById('progressBar')
   bar.style.width = `${(getDataJSON.progress_ms/getDataJSON.item.duration_ms)*100}%`
@@ -70,17 +81,12 @@ const interval = setInterval(async function() {
 
   let text = document.getElementById('session')
   let session_token = text.value
-  let config = {
-    headers: {
-        'Content-Type' : 'application/json'
-    }
-  }
+  
   if (getDataJSON.item.uri !== currentSong) {
       let data = {"session": `${session_token}`, "uris": [getDataJSON.item.uri], "offset": {"position": 0},"position_ms": getDataJSON.progress_ms}
       await axios.put('https://npbe.ramzihijjawi.me/song', data, config)
   }
-  else {
-  }
+  else {}
   currentSong = getDataJSON.item.uri
 }
 

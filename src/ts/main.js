@@ -29,7 +29,7 @@ function removeClass(el, className) {
     el.classList.remove(className)
   }
 }
-function pause() {
+async function pause() {
   if (spotify == true) {
     if (stillPaused == false) {
     let data = {"session": `${session_token}`}

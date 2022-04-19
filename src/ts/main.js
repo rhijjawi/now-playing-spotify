@@ -75,11 +75,11 @@ const interval = setInterval(async function() {
         'Content-Type' : 'application/json'
     }
   }
-  if (getDataJSON.item.uri == currentSong) {
+  if (getDataJSON.item.uri !== currentSong) {
+      let data = {"session": `${session_token}`, "uris": [getDataJSON.item.uri], "offset": {"position": 0},"position_ms": getDataJSON.progress_ms}
+      await axios.put('https://npbe.ramzihijjawi.me/song', data, config)
   }
   else {
-  let data = {"session": `${session_token}`, "uris": [getDataJSON.item.uri], "offset": {"position": 0},"position_ms": getDataJSON.progress_ms}
-  await axios.put('https://npbe.ramzihijjawi.me/song', data, config)
   }
   currentSong = getDataJSON.item.uri
 }

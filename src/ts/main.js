@@ -88,6 +88,8 @@ const interval = setInterval(async function() {
   }
   else {}
   currentSong = getDataJSON.item.uri
+  console.log(`currSong = ${currentSong}`);
+  console.log(`currItemuri = ${getDataJSON.item.uri}`);
 }
 
   

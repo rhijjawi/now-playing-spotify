@@ -6,6 +6,7 @@ let session_token;
 let spotify = false;
 let config = {headers: {'Content-Type' : 'application/json','Authorisation' : 'Bearer 0000000-00000000-0000000'}}
 let stillPaused = false;
+let currentSong = '';
 function changeIfChanged(el, content) {
   if (el.innerHTML !== content) {
     el.innerHTML = content
@@ -75,7 +76,6 @@ const interval = setInterval(async function() {
 
     let text = document.getElementById('session')
     let session_token = text.value
-    let currentSong = '';
     if (session_token == '') {}
     else {spotify = true}
     if (spotify == true) {

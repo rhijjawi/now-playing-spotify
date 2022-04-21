@@ -8,7 +8,7 @@ let config = {headers: {'Content-Type' : 'application/json','Authorisation' : 'B
 let stillPaused = false;
 let currentSong = '';
 let playlists = await axios.get('https://npbe.ramzihijjawi.me/playlist')
-
+playlists = playlists.data
 function changeIfChanged(el, content) {
   if (el.innerHTML !== content) {
     el.innerHTML = content

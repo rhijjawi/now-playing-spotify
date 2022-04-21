@@ -85,12 +85,13 @@ a:hover {
   bottom: 0px;
 }
 
-.playlists {
+.playlist {
   border-radius: 25px;
   border: solid #FFF;
   border-width: 2px;
   padding: 10px 10em 40px 20px;
 }
+
 .ptitle {
   font-size: 1.5rem;
   font-weight: 700;

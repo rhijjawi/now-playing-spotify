@@ -81,7 +81,7 @@ a:hover {
   width: 100%;
   background-color: var(--background);
   margin: 0px;
-  position: absolute;
+  position: fixed;
   bottom: 0px;
 }
 
@@ -132,7 +132,7 @@ a:hover {
 }
 
 .footer {
-  position: absolute;
+  position: fixed;
   text-align: center;
   padding: 1rem 0;
   color: var(--text-muted);

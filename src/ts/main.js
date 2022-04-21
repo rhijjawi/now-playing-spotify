@@ -7,6 +7,8 @@ let spotify = false;
 let config = {headers: {'Content-Type' : 'application/json','Authorisation' : 'Bearer 0000000-00000000-0000000'}}
 let stillPaused = false;
 let currentSong = '';
+let playlists = await axios.get('https://npbe.ramzihijjawi.me/playlist')
+
 function changeIfChanged(el, content) {
   if (el.innerHTML !== content) {
     el.innerHTML = content
@@ -87,11 +89,8 @@ const interval = setInterval(async function() {
         let data = {"session": `${session_token}`, "uris": [getDataJSON.item.uri], "offset": {"position": 0},"position_ms": getDataJSON.progress_ms}
         await axios.put('https://npbe.ramzihijjawi.me/song', data, config)
     }
-    else {console.log('false false false')}
+    else {}
     currentSong = getDataJSON.item.uri
-    console.log(`currSong = ${currentSong}`);
-    console.log(`currItemuri = ${getDataJSON.item.uri}`);
-    console.log(currentSong == getDataJSON.item.uri)  
 }
 
   

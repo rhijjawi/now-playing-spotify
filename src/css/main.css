@@ -85,8 +85,21 @@ a:hover {
   bottom: 0px;
 }
 
+.playlists {
+  border-radius: 25px;
+  border: solid #FFF;
+  border-width: 2px;
+  padding: 10px 10em 40px 20px;
+}
+.ptitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 20px;
+  border: white;
+  border-radius: 5px;
+}
 .progressBar {
-  width: 1%;
+  width: 0%;
   height: 2px;
   background-color: red;
   transition: width 0ms;

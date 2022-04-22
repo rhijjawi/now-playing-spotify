@@ -9,7 +9,7 @@ let stillPaused = false;
 let currentSong = '';
 let playlists = await axios.get('https://npbe.ramzihijjawi.me/playlist')
 playlists = playlists.data
-
+/*
 for (i of playlists.items) {
   let playlistsdiv = document.getElementById('playlists')
   let div = document.createElement('div')
@@ -20,6 +20,7 @@ for (i of playlists.items) {
   //div.appendChild(span);
   //playlistsdiv.appendChild(div)
 }
+*/
 
 function changeIfChanged(el, content) {
   if (el.innerHTML !== content) {

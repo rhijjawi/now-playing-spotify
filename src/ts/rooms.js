@@ -1,5 +1,5 @@
 let $ = (selector) => document.querySelector(selector);
-let getData = await axios.get(`https://npbe.ramzihijjawi.me/${document.location.search}`);
+let getData = await axios.get(`https://npbe.ramzihijjawi.me/?${document.location.search}`);
 let getDataJSON = getData.data
 let bar = document.getElementById('progressBar');
 let session_token;
@@ -43,7 +43,7 @@ async function pause() {
 }}}
 
 const interval = setInterval(async function() {
-  getData = await axios.get(`https://npbe.ramzihijjawi.me/${document.getElementById('session').value}`)
+  getData = await axios.get(`https://npbe.ramzihijjawi.me/?${document.getElementById('session').value}`)
   getDataJSON = getData.data
   
   if(getDataJSON.hasOwnProperty('status')){

@@ -45,10 +45,10 @@ function removeClass(el, className) {
     el.classList.remove(className)
   }
 }
-async function pause() {
+async function pause(uri) {
   if (spotify == true) {
     if (stillPaused == false) {
-    let data = {"session": `${session_token}`}
+    let data = {"session": `${session_token}`, "uri":uris}
     await axios.put('https://npbe.ramzihijjawi.me/pause', data, config)
     stillPaused = true;
   }}}
@@ -89,7 +89,7 @@ const interval = setInterval(async function() {
     if (!getDataJSON.is_playing) {
       changeIfChanged($('#status'), 'Paused')
       addClass($('#album-art'), 'pause-spin')
-      pause();
+      pause([getDataJSON.item.uri]);
     }
     bar = document.getElementById('progressBar')
     bar.style.width = `${(getDataJSON.progress_ms/getDataJSON.item.duration_ms)*100}%`

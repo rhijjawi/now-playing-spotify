@@ -52,7 +52,7 @@ async function pause(uri) {
     await axios.put('https://npbe.ramzihijjawi.me/pause', data, config)
     stillPaused = true;
   }}}
-  
+
 async function makeroom() {
   let r = await axios.post('https://npbe.ramzihijjawi.me/rooms', {withCredentials: true})
   document.cookie = r.data.set

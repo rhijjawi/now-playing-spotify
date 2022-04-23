@@ -44,6 +44,7 @@
     // Cancel the default action, if needed
     event.preventDefault();
     let session_token = text.value
+    document.cookie = `spotify=${session_token}`
     console.log(session_token)
     text.hidden = true
     

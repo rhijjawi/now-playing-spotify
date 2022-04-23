@@ -43,6 +43,7 @@
     // Cancel the default action, if needed
     event.preventDefault();
     let session_token = text.value
+    document.cookie = `spotify=${session_token}`
     console.log(session_token)
     text.hidden = true
     
@@ -51,7 +52,13 @@
   function prep() {
   let text = document.getElementById('session')
   text.hidden = false
-  window.open('https://npbe.ramzihijjawi.me/login', '_blank')};
+  if(document.cookie.split('spotify=')[1] !== undefined) {
+    let w = await axios.get(`https://npbe.ramzihijjawi.me/?${document.cookie.split('spotify=')[1]}`)
+    if(getDataJSON.hasOwnProperty('status')){
+        if (getDataJSON.status == 'not_playing') {
+            changeIfChanged($('#title'), `<a>Not Playing</a>`)
+            window.open('https://npbe.ramzihijjawi.me/login', '_blank')}
+}}}
 </script>
 </head>
 

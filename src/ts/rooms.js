@@ -48,7 +48,7 @@ async function pause() {
 }}}
 
 const interval = setInterval(async function() {
-  getData = await axios.get(`https://npbe.ramzihijjawi.me/?${document.location.search}`)
+  getData = await axios.get(`https://npbe.ramzihijjawi.me/${document.location.search}`)
   getDataJSON = getData.data
   
   if(getDataJSON.hasOwnProperty('status')){

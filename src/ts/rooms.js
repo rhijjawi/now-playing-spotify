@@ -7,20 +7,9 @@ let spotify = false;
 let config = {headers: {'Content-Type' : 'application/json','Authorisation' : 'Bearer 0000000-00000000-0000000'}}
 let stillPaused = false;
 let currentSong = '';
-let playlists = await axios.get('https://npbe.ramzihijjawi.me/playlist')
-playlists = playlists.data
-/*
-for (i of playlists.items) {
-  let playlistsdiv = document.getElementById('playlists')
-  let div = document.createElement('div')
-  let span = document.createElement('span')
-  span.className = 'ptitle'
-  span.innerHTML = i.name
-  div.className = 'playlist'
-  //div.appendChild(span);
-  //playlistsdiv.appendChild(div)
-}
-*/
+//let playlists = await axios.get('https://npbe.ramzihijjawi.me/playlist')
+//playlists = playlists.data
+
 
 function changeIfChanged(el, content) {
   if (el.innerHTML !== content) {
@@ -51,10 +40,10 @@ async function pause() {
     let data = {"session": `${session_token}`}
     await axios.put('https://npbe.ramzihijjawi.me/pause', data, config)
     stillPaused = true;
-  }}}
+}}}
 
 const interval = setInterval(async function() {
-  getData = await axios.get(`https://npbe.ramzihijjawi.me/${document.location.search}`)
+  getData = await axios.get(`https://npbe.ramzihijjawi.me/${document.getElementById('session').value}`)
   getDataJSON = getData.data
   
   if(getDataJSON.hasOwnProperty('status')){
@@ -87,7 +76,6 @@ const interval = setInterval(async function() {
     }
     bar = document.getElementById('progressBar')
     bar.style.width = `${(getDataJSON.progress_ms/getDataJSON.item.duration_ms)*100}%`
-
 
 
     let text = document.getElementById('session');

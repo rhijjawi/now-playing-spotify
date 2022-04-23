@@ -3,3 +3,4 @@ async function makeroom() {
     document.cookie = r.data.set
     window.open(r.data.redir)
 }
+

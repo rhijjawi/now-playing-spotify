@@ -1,9 +1,9 @@
-document.getElementById('makeroom').addEventListener('click', async function() {
-    let r = await axios.post('https://npbe.ramzihijjawi.me/rooms', {withCredentials: true})
+async function makeroom() {
+    let r = await axios.post('https://npbe.ramzihijjawi.me/rooms', {"cookie": document.cookie.split('spotify=')[1]})
     document.cookie = r.data.set
     window.open(r.data.redir)
-}); //Room creator function on button click
-
+}
+  
 document.addEventListener("DOMContentLoaded", function(event) { //Submit on Enter
     let text = document.getElementById('session')
     text.addEventListener("keyup", function(event) {

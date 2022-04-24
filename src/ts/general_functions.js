@@ -19,10 +19,7 @@ if (!el.classList.contains(className)) {
 function removeClass(el, className) {
 if (el.classList.contains(className)) {
     el.classList.remove(className)
-}
-}
-
-
+}}
 
 async function makeroom() {
     let r = await axios.post('https://npbe.ramzihijjawi.me/rooms', {"cookie": document.cookie.split('spotify=')[1]})

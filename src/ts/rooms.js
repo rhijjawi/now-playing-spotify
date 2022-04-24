@@ -9,6 +9,7 @@ let stillPaused = false;
 let currentSong = '';
 //let playlists = await axios.get('https://npbe.ramzihijjawi.me/playlist')
 //playlists = playlists.data
+
 async function pause(uri) {
   if (spotify == true) {
       if (stillPaused == false) {
@@ -16,6 +17,7 @@ async function pause(uri) {
       await axios.put('https://npbe.ramzihijjawi.me/pause', data, config)
       stillPaused = true;
   }}}
+  
 const interval = setInterval(async function() {
   getData = await axios.get(`https://npbe.ramzihijjawi.me/${document.location.search}`)
   getDataJSON = getData.data

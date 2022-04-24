@@ -20,10 +20,10 @@ function removeClass(el, className) {
 if (el.classList.contains(className)) {
     el.classList.remove(className)
 }}
-
-async function makeroom() {
+document.getElementById('makeroom').addEventListener('click', async function makeroom() {
     let r = await axios.post('https://npbe.ramzihijjawi.me/rooms', {"cookie": document.cookie.split('spotify=')[1]})
     document.cookie = r.data.set
     window.open(r.data.redir)
-}
+});
+
   

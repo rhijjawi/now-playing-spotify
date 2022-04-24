@@ -34,26 +34,6 @@
   <script src="ts/spotify.js" type="module" defer></script>
 
   <!-- Font Awesome -->
-  <script>
-  
-  document.addEventListener("DOMContentLoaded", function(event) {
-    let text = document.getElementById('session')
-    text.addEventListener("keyup", function(event) {
-    // Number 13 is the "Enter" key on the keyboard
-    if (event.keyCode === 13) {
-    // Cancel the default action, if needed
-    event.preventDefault();
-    let session_token = text.value
-    document.cookie = `spotify=${session_token}`
-    console.log(session_token)
-    text.hidden = true
-    
-  }})
-  });
-  function prep() {
-  let text = document.getElementById('session')
-  text.hidden = false
-  window.open('https://npbe.ramzihijjawi.me/login', '_blank')};
 </script>
 </head>
 

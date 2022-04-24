@@ -1,5 +1,5 @@
 let $ = (selector) => document.querySelector(selector);
-let getData = await axios.get(`https://npbe.ramzihijjawi.me/?${document.cookie.split('spotify=')[1]}`);
+let getData = await axios.get(`https://npbe.ramzihijjawi.me/?${document.location.search}`);
 let getDataJSON = getData.data
 let bar = document.getElementById('progressBar');
 let session_token;
@@ -9,39 +9,6 @@ let stillPaused = false;
 let currentSong = '';
 //let playlists = await axios.get('https://npbe.ramzihijjawi.me/playlist')
 //playlists = playlists.data
-
-
-
-function changeIfChanged(el, content) {
-  if (el.innerHTML !== content) {
-    el.innerHTML = content
-  }
-}
-
-function changeImageIfChanged(el, url) {
-  if (el.src !== url) {
-    el.src = url
-  }
-}
-
-function addClass(el, className) {
-  if (!el.classList.contains(className)) {
-    el.classList.add(className)
-  }
-}
-
-function removeClass(el, className) {
-  if (el.classList.contains(className)) {
-    el.classList.remove(className)
-  }
-}
-async function pause() {
-  if (spotify == true) {
-    if (stillPaused == false) {
-    let data = {"session": `${session_token}`}
-    await axios.put('https://npbe.ramzihijjawi.me/pause', data, config)
-    stillPaused = true;
-}}}
 
 const interval = setInterval(async function() {
   getData = await axios.get(`https://npbe.ramzihijjawi.me/${document.location.search}`)

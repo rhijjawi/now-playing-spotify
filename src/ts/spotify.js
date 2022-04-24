@@ -25,10 +25,10 @@ function prep() {
 }; //Log in into Spotify
 
 async function pause(uri) {
-if (spotify == true) {
-    if (stillPaused == false) {
-    let data = {"session": `${session_token}`, "uri":uri}
-    await axios.put('https://npbe.ramzihijjawi.me/pause', data, config)
-    stillPaused = true;
-}}}
-  
+    if (spotify == true) {
+        if (stillPaused == false) {
+        let data = {"session": `${session_token}`, "uri":uri}
+        await axios.put('https://npbe.ramzihijjawi.me/pause', data, config)
+        stillPaused = true;
+    }}}
+      

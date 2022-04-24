@@ -22,13 +22,7 @@ if (el.classList.contains(className)) {
 }
 }
 
-async function pause(uri) {
-if (spotify == true) {
-    if (stillPaused == false) {
-    let data = {"session": `${session_token}`, "uri":uri}
-    await axios.put('https://npbe.ramzihijjawi.me/pause', data, config)
-    stillPaused = true;
-}}}
+
 
 async function makeroom() {
     let r = await axios.post('https://npbe.ramzihijjawi.me/rooms', {"cookie": document.cookie.split('spotify=')[1]})

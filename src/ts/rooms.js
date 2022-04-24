@@ -10,11 +10,7 @@ let currentSong = '';
 //let playlists = await axios.get('https://npbe.ramzihijjawi.me/playlist')
 //playlists = playlists.data
 
-async function makeroom() {
-  let r = await axios.post('https://npbe.ramzihijjawi.me/rooms', {withCredentials: true})
-  document.cookie = r.data.set
-  window.open(r.data.redir)
-}
+
 
 function changeIfChanged(el, content) {
   if (el.innerHTML !== content) {

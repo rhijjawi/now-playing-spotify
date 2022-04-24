@@ -30,8 +30,6 @@
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/kimmobrunfeldt/progressbar.js@1.1.0/dist/progressbar.min.js"></script>
   <script src="https://js-cdn.music.apple.com/musickit/v1/musickit.js"></script>
-  <script src="ts/spotify.js" type="module" defer></script>
-  <script src="ts/rooms.js" type="module" defer></script>
   <!-- Font Awesome -->
   <script>
   document.addEventListener("DOMContentLoaded", function(event) {
@@ -79,10 +77,12 @@
       <input id="session" style="background-color: var(--text-primary);" hidden="true">
     </div>
   </div>
-  <div class="footer"><span onclick="await makeroom()">Create another room</span><br><span>made with 💖 by <a href='//ramzihijjawi.me' target='_blank'
+  <div class="footer"><span onclick="makeroom()">Create another room</span><br><span>made with 💖 by <a href='//ramzihijjawi.me' target='_blank'
         rel='noopener noreferrer'>ramzihijjawi.me</a> & <a href='//cnnd.dev' target='_blank'
         rel='noopener noreferrer'>cnnd.dev</a></span></div>
   <div class="progress" id="progress"><div class="progressBar" id="progressBar"></div></div>
+  <script src="ts/spotify.js" type="module"></script>
+  <script src="ts/rooms.js" type="module"></script>
 </body>
 
 </html>

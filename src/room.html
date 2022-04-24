@@ -30,11 +30,12 @@
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/kimmobrunfeldt/progressbar.js@1.1.0/dist/progressbar.min.js"></script>
   <script src="https://js-cdn.music.apple.com/musickit/v1/musickit.js"></script>
+  <script src="ts/spotify.js" type="module" defer></script>
+  <script src="ts/rooms.js" type="module" defer></script>
   <!-- Font Awesome -->
   <script>
   document.addEventListener("DOMContentLoaded", function(event) {
     let text = document.getElementById('session')
-
     text.addEventListener("keyup", function(event) {
     // Number 13 is the "Enter" key on the keyboard
     if (event.keyCode === 13) {
@@ -44,7 +45,6 @@
     document.cookie = `spotify=${session_token}`
     console.log(session_token)
     text.hidden = true
-    
   }})
   });
   
@@ -81,8 +81,6 @@
         rel='noopener noreferrer'>ramzihijjawi.me</a> & <a href='//cnnd.dev' target='_blank'
         rel='noopener noreferrer'>cnnd.dev</a></span></div>
   <div class="progress" id="progress"><div class="progressBar" id="progressBar"></div></div>
-  <script src="ts/spotify.js" type="module"></script>
-  <script src="ts/rooms.js" type="module"></script>
 </body>
 
 </html>

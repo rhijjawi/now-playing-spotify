@@ -35,6 +35,11 @@
 
   <!-- Font Awesome -->
   <script>
+  document.getElementById('makeroom').addEventListener('click', function() {
+  let r = await axios.post('https://npbe.ramzihijjawi.me/rooms', {withCredentials: true})
+  document.cookie = r.data.set
+  window.open(r.data.redir)
+  });
   document.addEventListener("DOMContentLoaded", function(event) {
     let text = document.getElementById('session')
     text.addEventListener("keyup", function(event) {
@@ -68,7 +73,7 @@
       <input id="session" style="background-color: var(--text-primary);" hidden="true">
     </div>
   </div>
-  <div class="footer"><span onclick="await makeroom()">Create a room</span><br><span>made with 💖 by <a href='//ramzihijjawi.me' target='_blank'
+  <div class="footer"><span id="makeroom">Create a room</span><br><span>made with 💖 by <a href='//ramzihijjawi.me' target='_blank'
         rel='noopener noreferrer'>ramzihijjawi.me</a> & <a href='//cnnd.dev' target='_blank'
         rel='noopener noreferrer'>cnnd.dev</a></span></div>
   <div class="progress" id="progress"><div class="progressBar" id="progressBar"></div></div>

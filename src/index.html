@@ -35,11 +35,7 @@
 
   <!-- Font Awesome -->
   <script>
-  document.getElementById('makeroom').addEventListener('click', function() {
-  let r = await axios.post('https://npbe.ramzihijjawi.me/rooms', {withCredentials: true})
-  document.cookie = r.data.set
-  window.open(r.data.redir)
-  });
+  
   document.addEventListener("DOMContentLoaded", function(event) {
     let text = document.getElementById('session')
     text.addEventListener("keyup", function(event) {

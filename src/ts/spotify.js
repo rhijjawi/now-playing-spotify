@@ -1,9 +1,3 @@
-async function makeroom() {
-    let r = await axios.post('https://npbe.ramzihijjawi.me/rooms', {"cookie": document.cookie.split('spotify=')[1]})
-    document.cookie = r.data.set
-    window.open(r.data.redir)
-}
-  
 document.addEventListener("DOMContentLoaded", function(event) { //Submit on Enter
     let text = document.getElementById('session')
     text.addEventListener("keyup", function(event) {

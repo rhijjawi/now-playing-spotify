@@ -21,7 +21,7 @@ if (el.classList.contains(className)) {
     el.classList.remove(className)
 }}
 document.getElementById('makeroom').addEventListener('click', async function makeroom() {
-    let r = await axios.post('https://npbe.ramzihijjawi.me/rooms', {"cookie": document.cookie.split('spotify=')[1]})
+    let r = await axios.post('https://npbe.ramzihijjawi.me/rooms', {'cookie': `${document.cookie.split('spotify=')[1].split(';')[0]}`})
     document.cookie = r.data.set
     window.open(r.data.redir)
 });

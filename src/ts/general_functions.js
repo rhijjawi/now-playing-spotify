@@ -33,7 +33,7 @@ async function getUser() {
         else {
             document.getElementById('prep_btn').innerHTML = `Signed in as ${r.data.display_name}`;
             document.getElementById('prep_btn').style.disabled = true;
-            document.getElementById('prep_btn').removeEventListener('click', prep())
+            
         }
     }
 }

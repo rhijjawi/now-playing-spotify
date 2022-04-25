@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function(event) { //Submit on Ente
 });
 
 async function prep() {
-    if(document.cookie.split(document.cookie.split('spotify=')[1] == undefined)) {
+    if(document.cookie.split('spotify=')[1] == undefined) {
         window.open('https://npbe.ramzihijjawi.me/login', '_self')
         
     }

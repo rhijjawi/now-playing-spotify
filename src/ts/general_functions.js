@@ -31,8 +31,14 @@ async function getUser() {
         let r = await axios.post('https://npbe.ramzihijjawi.me/me', {'cookie': `${document.cookie.split('spotify=')[1].split(';')[0]}`}, config)
         if (r.data.hasOwnProperty('error')) {}
         else {
+            let x = document.createElement('span')
+            let br = document.createElement('br')
+            x.className = "muted"
+            x.innerHTML = `Signed in as ${r.data.display_name}`
+            document.getElementsByClassName('track-info')[0].appendChild(br)
+            document.getElementsByClassName('track-info')[0].appendChild(x)
             document.getElementById('prep_btn').innerHTML = `Signed in as ${r.data.display_name}`;
-            document.getElementById('prep_btn').style.disabled = true;
+            document.getElementById('prep_btn').hidden = true;
             
         }
     }

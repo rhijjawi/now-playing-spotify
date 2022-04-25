@@ -48,27 +48,13 @@
   }})
   });
   
-  
-  async function prep() {
-  let text = document.getElementById('session')
-  text.hidden = false
-  if(document.cookie.split('spotify=')[1] !== undefined) {
-    let w = await axios.get(`https://npbe.ramzihijjawi.me/?id=${document.cookie.split('spotify=')[1]}`)
-    if(getDataJSON.hasOwnProperty('status')){
-        if (getDataJSON.status == 'not_playing') {
-            changeIfChanged($('#title'), `<a>Not Playing</a>`)
-            window.open('https://npbe.ramzihijjawi.me/login', '_blank')}
-    text.value = document.cookie.split('spotify=')[1]
-    text.hidden = true
-
-}}}
 </script>
 </head>
 
 <body>
   <div class="container">
     <span id="status">Please click the icon below to Log In</span>
-    <img src="./Spotify.svg" onclick="prep()" draggable='false' alt="Album Art" id="album-art">
+    <img src="./Spotify.svg" id="prep_btn" draggable='false' alt="Album Art" id="album-art">
     <div class="track-info">
       <span id="title"></span>
       <span id="album"><span class="muted"></span></span>

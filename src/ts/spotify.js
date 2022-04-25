@@ -12,11 +12,18 @@ document.addEventListener("DOMContentLoaded", function(event) { //Submit on Ente
 }})
 });
 
-function prep() {
+document.getElementById('prep_btn').addEventListener('click', async function prep() {
     let text = document.getElementById('session')
     text.hidden = false
-    window.open('https://npbe.ramzihijjawi.me/login', '_blank')
-}; //Log in into Spotify
+    if(document.cookie.split('spotify=')[1] !== undefined) {
+      let w = await axios.get(`https://npbe.ramzihijjawi.me/?id=${document.cookie.split('spotify=')[1]}`)
+      if(getDataJSON.hasOwnProperty('status')){
+          if (getDataJSON.status == 'not_playing') {
+              changeIfChanged($('#title'), `<a>Not Playing</a>`)
+              window.open('https://npbe.ramzihijjawi.me/login', '_blank')}
+      text.value = document.cookie.split('spotify=')[1]
+      text.hidden = true
+}}});
 
 async function pause(uri) {
     if (spotify == true) {

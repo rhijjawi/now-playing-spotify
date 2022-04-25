@@ -22,11 +22,4 @@ async function prep() {
     }
 document.getElementById('prep_btn').addEventListener('click',prep());
 
-async function pause(uri) {
-    if (spotify == true) {
-        if (stillPaused == false) {
-        let data = {'session': `${document.cookie.split('spotify=')[1].split(';')[0]}`, 'uris':uri}
-        await axios.put('https://npbe.ramzihijjawi.me/pause', data, config)
-        stillPaused = true;
-    }}}
       

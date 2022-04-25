@@ -75,6 +75,14 @@ a:hover {
   transition: color .15s ease-in-out;
 }
 
+.sign-in {
+  background: limegreen;
+  border: none;
+  padding: 0.5em;
+  margin: 10px 2px;
+  border-radius: 6px;
+}
+
 .card-title {
   font-size: 1.25rem;
   margin-bottom: 0.75rem;

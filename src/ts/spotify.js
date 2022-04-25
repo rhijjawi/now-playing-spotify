@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function(event) { //Submit on Ente
 }})
 });
 
-document.getElementById('prep_btn').addEventListener('click', async function prep() {
+document.getElementsByTagName('img')[0].addEventListener('click', async function prep() {
     let text = document.getElementById('session')
     if(document.cookie.split(document.cookie.split('spotify=')[1] == undefined)) {
       text.hidden = false

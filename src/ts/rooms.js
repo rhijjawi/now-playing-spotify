@@ -26,8 +26,8 @@ const interval = setInterval(async function() {
     else {}
     }
   else {
-    let volume = `@ ${getDataJSON.device.volume_percent}% volume`
-    let playingStatement = `Playing on <span class="bold">${getDataJSON['device']['name']}</span> ${volume}`
+    //let volume = `@ ${getDataJSON.device.volume_percent}% volume`
+    //let playingStatement = `Playing on <span class="bold">${getDataJSON['device']['name']}</span> ${volume}`
     changeImageIfChanged($('#album-art'), getDataJSON.item.album.images[0].url)
     changeIfChanged($('#title'), `<a href="${getDataJSON.item.external_urls.spotify}">${getDataJSON.item.name}</a>`)
     changeIfChanged(

@@ -7,8 +7,7 @@ let spotify = false;
 let config = {headers: {'Content-Type' : 'application/json','Authorisation' : 'Bearer 0000000-00000000-0000000'}}
 let stillPaused = false;
 let currentSong = '';
-//let playlists = await axios.get('https://npbe.ramzihijjawi.me/playlist')
-//playlists = playlists.data
+//
 
 async function pause(uri) {
   if (spotify == true) {

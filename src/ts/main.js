@@ -8,6 +8,7 @@ let config = {headers: {'Content-Type' : 'application/json','Authorisation' : 'B
 let stillPaused = false;
 let currentSong = '';
 let playlists = await axios.get('https://npbe.ramzihijjawi.me/playlist')
+import {changeIfChanged, changeImageIfChanged, addClass, removeClass} from "./general_functions.js"
 playlists = playlists.data
 
 async function pause(uri) {

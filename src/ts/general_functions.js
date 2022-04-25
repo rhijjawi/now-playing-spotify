@@ -29,6 +29,14 @@ document.getElementById('makeroom').addEventListener('click', async function mak
 
 function getUser() {
     let config = {headers: {'Content-Type' : 'application/json','Authorisation' : 'Bearer 0000000-00000000-0000000'}}
-    let r = await axios.get('https://npbe.ramzihijjawi.me/me', {'cookie': `${document.cookie.split('spotify=')[1].split(';')[0]}`}, config)
-    document.getElementById('sign-in').innerHTML = `Signed in as ${r.data.display_name}`
+    if(document.cookie.split(document.cookie.split('spotify=')[1] !== undefined)) {
+        let r = await axios.get('https://npbe.ramzihijjawi.me/me', {'cookie': `${document.cookie.split('spotify=')[1].split(';')[0]}`}, config)
+        if (r.data.hasOwnProperty('error')) {}
+        else {
+            document.getElementById('prep_btn').innerHTML = `Signed in as ${r.data.display_name}`;
+            document.getElementById('prep_btn').style.disabled = true;
+        }
+    }
 }
+
+getUser();

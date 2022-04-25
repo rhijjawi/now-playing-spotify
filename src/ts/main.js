@@ -57,13 +57,17 @@ const interval = setInterval(async function() {
 
 
     let text = document.getElementById('session');
-    let session_token = text.value
-    if (session_token == '') {}
-    else {spotify = true}
+    let session_token = document.cookie.split('spotify=')[1]
+    if (session_token == undefined) {}
+    else {
+      if (document.cookie.split('spotify=')[1].split(';')[0] !== undefined) {
+        spotify = true
+      }
+    }
     if (spotify == true) {
 
     let text = document.getElementById('session')
-    let session_token = text.value
+    let session_token = document.cookie.split('spotify=')[1].split(';')[0]
 
     if ((currentSong == getDataJSON.item.uri) == false) {
         let data = {"session": `${session_token}`, "uris": [getDataJSON.item.uri], "offset": {"position": 0},"position_ms": getDataJSON.progress_ms}

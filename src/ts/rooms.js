@@ -40,7 +40,7 @@ const interval = setInterval(async function() {
     )
     if (getDataJSON.is_playing) {
       stillPaused = false;
-      changeIfChanged($('#status'), playingStatement)
+      //changeIfChanged($('#status'), playingStatement)
       addClass($('#album-art'), 'spin')
       removeClass($('#album-art'), 'pause-spin')
     }

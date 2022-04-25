@@ -13,14 +13,14 @@ document.addEventListener("DOMContentLoaded", function(event) { //Submit on Ente
 }})
 });
 
-document.getElementById('prep_btn').addEventListener('click', async function prep() {
+async function prep() {
     if(document.cookie.split(document.cookie.split('spotify=')[1] == undefined)) {
         window.open('https://npbe.ramzihijjawi.me/login', '_self')
-}
-      else{
-          console.log('Logged in')
-      }
-});
+        
+    }
+    else{}
+    }
+document.getElementById('prep_btn').addEventListener('click',prep());
 
 async function pause(uri) {
     if (spotify == true) {

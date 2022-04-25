@@ -21,13 +21,11 @@ if (el.classList.contains(className)) {
     el.classList.remove(className)
 }}
 
-document.getElementById('makeroom').addEventListener('click', async function makeroom() {
-    let r = await axios.post('https://npbe.ramzihijjawi.me/rooms', {'cookie': `${document.cookie.split('spotify=')[1].split(';')[0]}`})
-    document.cookie = r.data.set
-    window.open(r.data.redir)
-});
+function rmEventListener(func) {
+    document.getElementById('prep_btn').removeEventListener('click', func)
+}
 
-document.addEventListener('DOMContentLoaded', async function getUser() {
+async function getUser() {
     let config = {headers: {'Content-Type' : 'application/json','Authorisation' : 'Bearer 0000000-00000000-0000000'}}
     if(document.cookie.split(document.cookie.split('spotify=')[1] !== undefined)) {
         let r = await axios.post('https://npbe.ramzihijjawi.me/me', {'cookie': `${document.cookie.split('spotify=')[1].split(';')[0]}`}, config)
@@ -35,8 +33,17 @@ document.addEventListener('DOMContentLoaded', async function getUser() {
         else {
             document.getElementById('prep_btn').innerHTML = `Signed in as ${r.data.display_name}`;
             document.getElementById('prep_btn').style.disabled = true;
+            document.getElementById('prep_btn').removeEventListener('click', prep())
         }
     }
+}
+
+document.getElementById('makeroom').addEventListener('click', async function makeroom() {
+    let r = await axios.post('https://npbe.ramzihijjawi.me/rooms', {'cookie': `${document.cookie.split('spotify=')[1].split(';')[0]}`})
+    document.cookie = r.data.set
+    window.open(r.data.redir)
 });
+
+document.addEventListener('DOMContentLoaded', getUser());
 
 

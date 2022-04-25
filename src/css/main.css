@@ -158,7 +158,7 @@ a:hover {
   margin-top: 1rem;
 }
 
-.album-art {
+#album-art {
   width: 215px;
   height: 215px;
   background-size: cover;
@@ -167,7 +167,7 @@ a:hover {
   border-radius: 50%;
 }
 
-.album-art:hover {
+#album-art:hover {
   animation-play-state: paused;
   -moz-animation-play-state: paused;
   -webkit-animation-play-state: paused;

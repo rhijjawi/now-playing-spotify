@@ -43,12 +43,12 @@ const interval = setInterval(async function() {
     if (getDataJSON.is_playing) {
       stillPaused = false;
       changeIfChanged($('#status'), playingStatement)
-      addClass($('#album-art'), 'spin')
+      addClass($('#album-art'), 'album-art spin')
       removeClass($('#album-art'), 'pause-spin')
     }
     if (!getDataJSON.is_playing) {
       changeIfChanged($('#status'), 'Paused')
-      addClass($('#album-art'), 'pause-spin')
+      addClass($('#album-art'), 'album-art pause-spin')
       pause([getDataJSON.item.uri]);
     }
     bar = document.getElementById('progressBar')

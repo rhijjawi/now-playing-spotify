@@ -66,9 +66,6 @@ const interval = setInterval(async function() {
     }
     if (spotify == true) {
 
-    let text = document.getElementById('session')
-    let session_token = text.value
-
     if ((currentSong == getDataJSON.item.uri) == false) {
         let data = {"session": `${session_token}`, "uris": [getDataJSON.item.uri], "offset": {"position": 0},"position_ms": getDataJSON.progress_ms}
         await axios.put('https://npbe.ramzihijjawi.me/song', data, config)

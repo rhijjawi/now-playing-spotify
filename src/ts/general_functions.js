@@ -37,6 +37,6 @@ document.addEventListener('load', async function getUser() {
             document.getElementById('prep_btn').style.disabled = true;
         }
     }
-}
+});
 
 

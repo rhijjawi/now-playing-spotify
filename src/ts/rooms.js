@@ -55,6 +55,7 @@ const interval = setInterval(async function() {
 
     let text = document.getElementById('session');
     let session_token = text.value
+    document.getElementById('link').href = window.location.href;
     if (session_token == '') {}
     else {spotify = true}
     if (spotify == true) {

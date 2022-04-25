@@ -14,7 +14,7 @@ playlists = playlists.data
 async function pause(uri) {
   if (spotify == true) {
       if (stillPaused == false) {
-      let data = {"session": `${session_token}`, "uri":uri}
+      let data = {"session": `${session_token}`, "uris":uri}
       await axios.put('https://npbe.ramzihijjawi.me/pause', data, config)
       stillPaused = true;
   }}}

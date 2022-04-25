@@ -2,7 +2,7 @@ let $ = (selector) => document.querySelector(selector);
 let getData = await axios.get(`https://npbe.ramzihijjawi.me/room${document.location.search}`);
 let getDataJSON = getData.data
 let bar = document.getElementById('progressBar');
-let session_token;
+let session_token = document.cookie.split('spotify=')[1].split(';')[0];
 let spotify = false;
 let config = {headers: {'Content-Type' : 'application/json','Authorisation' : 'Bearer 0000000-00000000-0000000'}}
 let stillPaused = false;
@@ -12,7 +12,7 @@ let currentSong = '';
 async function pause(uri) {
   if (spotify == true) {
       if (stillPaused == false) {
-      let data = {'session': `${document.cookie.split('spotify=')[1]}`, 'uris':uri}
+      let data = {'session': `${document.cookie.split('spotify=')[1].split(';')[0]}`, 'uris':uri}
       await axios.put('https://npbe.ramzihijjawi.me/pause', data, config)
       stillPaused = true;
   }}}
@@ -52,16 +52,11 @@ const interval = setInterval(async function() {
     bar = document.getElementById('progressBar')
     bar.style.width = `${(getDataJSON.progress_ms/getDataJSON.item.duration_ms)*100}%`
 
-
-    let text = document.getElementById('session');
-    let session_token = text.value
+    let session_token = document.cookie.split('spotify=')[1].split(';')[0]
     document.getElementById('link').href = window.location.href;
-    if (session_token == '') {}
+    if (session_token == undefined) {}
     else {spotify = true}
     if (spotify == true) {
-
-    let text = document.getElementById('session')
-    let session_token = text.value
 
     if ((currentSong == getDataJSON.item.uri) == false) {
         let data = {"session": `${session_token}`, "uris": [getDataJSON.item.uri], "offset": {"position": 0},"position_ms": getDataJSON.progress_ms}

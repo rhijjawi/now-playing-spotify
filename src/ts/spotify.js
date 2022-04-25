@@ -16,17 +16,11 @@ document.addEventListener("DOMContentLoaded", function(event) { //Submit on Ente
 document.getElementById('prep_btn').addEventListener('click', async function prep() {
     let text = document.getElementById('session')
     if(document.cookie.split(document.cookie.split('spotify=')[1] == undefined)) {
-      text.hidden = false
-      //let w = await axios.get(`https://npbe.ramzihijjawi.me/?id=${document.cookie.split('spotify=')[1].split(';')[0]}`)
-      //if(getDataJSON.hasOwnProperty('redir')){
-      //    if (getDataJSON.error == 'no_auth') {
-      window.open('https://npbe.ramzihijjawi.me/login', '_blank')
-      text.value = document.cookie.split('spotify=')[1]
-      text.hidden = false
-    }
-    else{
-        console.log('Logged in')
-    }
+        window.open('https://npbe.ramzihijjawi.me/login', '_self')
+}
+      else{
+          console.log('Logged in')
+      }
 });
 
 async function pause(uri) {

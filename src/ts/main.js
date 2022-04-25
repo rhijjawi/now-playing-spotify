@@ -57,7 +57,6 @@ const interval = setInterval(async function() {
 
 
 
-    let text = document.getElementById('session');
     let session_token = document.cookie.split('spotify=')[1]
     if (session_token == undefined) {}
     else {

@@ -1,5 +1,5 @@
 let $ = (selector) => document.querySelector(selector);
-let getData = await axios.get(`https://npbe.ramzihijjawi.me/room?${document.location.search}`);
+let getData = await axios.get(`https://npbe.ramzihijjawi.me/room${document.location.search}`);
 let getDataJSON = getData.data
 let bar = document.getElementById('progressBar');
 let session_token;

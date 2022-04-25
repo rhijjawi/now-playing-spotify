@@ -15,15 +15,18 @@ document.addEventListener("DOMContentLoaded", function(event) { //Submit on Ente
 document.getElementById('prep_btn').addEventListener('click', async function prep() {
     let text = document.getElementById('session')
     text.hidden = false
-    if(document.cookie.split('spotify=')[1] !== undefined) {
-      let w = await axios.get(`https://npbe.ramzihijjawi.me/?id=${document.cookie.split('spotify=')[1]}`)
+    if(document.cookie.split(document.cookie.split('spotify=')[1].split(';')[0] !== undefined)) {
+      let w = await axios.get(`https://npbe.ramzihijjawi.me/?id=${document.cookie.split('spotify=')[1].split(';')[0]}`)
       if(getDataJSON.hasOwnProperty('status')){
           if (getDataJSON.status == 'not_playing') {
               changeIfChanged($('#title'), `<a>Not Playing</a>`)
               window.open('https://npbe.ramzihijjawi.me/login', '_blank')}
       text.value = document.cookie.split('spotify=')[1]
       text.hidden = true
-}}});
+    
+}
+    else{}
+}});
 
 async function pause(uri) {
     if (spotify == true) {

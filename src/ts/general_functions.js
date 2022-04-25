@@ -30,7 +30,7 @@ document.getElementById('makeroom').addEventListener('click', async function mak
 document.addEventListener('load', async function getUser() {
     let config = {headers: {'Content-Type' : 'application/json','Authorisation' : 'Bearer 0000000-00000000-0000000'}}
     if(document.cookie.split(document.cookie.split('spotify=')[1] !== undefined)) {
-        let r = await axios.get('https://npbe.ramzihijjawi.me/me', {'cookie': `${document.cookie.split('spotify=')[1].split(';')[0]}`}, config)
+        let r = await axios.post('https://npbe.ramzihijjawi.me/me', {'cookie': `${document.cookie.split('spotify=')[1].split(';')[0]}`}, config)
         if (r.data.hasOwnProperty('error')) {}
         else {
             document.getElementById('prep_btn').innerHTML = `Signed in as ${r.data.display_name}`;

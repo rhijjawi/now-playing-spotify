@@ -29,7 +29,7 @@ async function getUser() {
     let config = {headers: {'Content-Type' : 'application/json','Authorisation' : 'Bearer 0000000-00000000-0000000'}}
     if(document.cookie.split(document.cookie.split('spotify=')[1] !== undefined)) {
         let r = await axios.post('https://npbe.ramzihijjawi.me/me', {'cookie': `${document.cookie.split('spotify=')[1].split(';')[0]}`}, config)
-        if (r.data.hasOwnProperty('error')) {}
+        if (r.data.hasOwnProperty('error')) {alert(r.data.error)}
         else {
             let x = document.createElement('span')
             let br = document.createElement('br')

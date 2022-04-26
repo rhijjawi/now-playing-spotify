@@ -57,7 +57,8 @@ const interval = setInterval(async function() {
 
 
 
-    let session_token = document.cookie.split('spotify=')[1]
+    let session_token = document.cookie.split('spotify=')[1].split(';')[0]
+    document.getElementById('link').href = window.location.href;
     if (session_token == undefined) {}
     else {
       if (document.cookie.split('spotify=')[1].split(';')[0] !== undefined) {
@@ -65,7 +66,6 @@ const interval = setInterval(async function() {
       }
     }
     if (spotify == true) {
-
     if ((currentSong == getDataJSON.item.uri) == false) {
         let data = {"session": `${session_token}`, "uris": [getDataJSON.item.uri], "offset": {"position": 0},"position_ms": getDataJSON.progress_ms}
         await axios.put('https://npbe.ramzihijjawi.me/song', data, config)

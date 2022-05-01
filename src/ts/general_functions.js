@@ -26,8 +26,8 @@ function rmEventListener(func) {
 }
 
 async function getUser() {
-    if (window.href.location !== ''){
-        document.getElementById('link').href = window.href.location
+    if (window.location.search !== ''){
+        document.getElementById('link').href = window.location.href
     }
     let config = {headers: {'Content-Type' : 'application/json','Authorisation' : 'Bearer 0000000-00000000-0000000'}}
     if(document.cookie.split(document.cookie.split('spotify=')[1] !== undefined)) {

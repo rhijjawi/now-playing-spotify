@@ -30,11 +30,12 @@ async function play(uri) {
 }}}
 async function play(uri) {
     if (spotify == true) {
+      stillPaused = false;
           if (stillPaused == false) {
                   if (document.cookie.split(document.location.search.split('=')[1]+"=")[1] == undefined){
                           let data = {'session': `${document.cookie.split('spotify=')[1].split(';')[0]}`, 'uris':uri}
                                   await axios.put('https://npbe.ramzihijjawi.me/play', data, config)
-                                          stillPaused = true;
+                                          stillPaused = false;
   }}}}
 
   

@@ -38,7 +38,7 @@ const interval = setInterval(async function() {
   if(getDataJSON.hasOwnProperty('error')){
     if (getDataJSON.error == 'not_playing') {changeIfChanged($('#title'), `<a>Not Playing</a>`)} 
     if (getDataJSON.error == 'room_not_found') {changeIfChanged($('#title'), `<a>Room not found</a>`)}
-    
+  }
   else {
     //let volume = `@ ${getDataJSON.device.volume_percent}% volume`
     //let playingStatement = `Playing on <span class="bold">${getDataJSON['device']['name']}</span> ${volume}`

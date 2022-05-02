@@ -41,6 +41,8 @@ const interval = setInterval(async function() {
     changeIfChanged($('#title'), `<a>Room not found</a>`)
     changeIfChanged($('#status'), '')}
     changeIfChanged($('#link_cont'), '')
+    changeIfChanged($('#album'), '')
+    changeIfChanged($('#artist'),'')
     changeImageIfChanged($('#album-art'), './sad.png')
   }
   else {
@@ -75,7 +77,7 @@ const interval = setInterval(async function() {
     bar.style.width = `${(getDataJSON.progress_ms/getDataJSON.item.duration_ms)*100}%`
 
     let session_token = document.cookie.split('spotify=')[1].split(';')[0]
-    .href = window.location.href;
+    document.getElementById('link').href = window.location.href;
     if (session_token == undefined) {}
     else {spotify = true}
     if (spotify == true) {

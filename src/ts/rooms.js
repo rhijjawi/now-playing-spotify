@@ -7,6 +7,7 @@ let spotify = false;
 let config = {headers: {'Content-Type' : 'application/json','Authorisation' : 'Bearer 0000000-00000000-0000000'}}
 let stillPaused = false;
 let currentSong = '';
+let playing = false;
 //
 
 async function pause(uri) {
@@ -18,24 +19,15 @@ async function pause(uri) {
         stillPaused = true;
       }
   }}}
-async function play(uri) {
-    if (spotify == true) {
-          if (stillPaused == false) {
-                  if (document.cookie.split(document.location.search.split('=')[1]+"=")[1] == undefined){
-                          let data = {'session': `${document.cookie.split('spotify=')[1].split(';')[0]}`, 'uris':uri}
-                                  await axios.put('https://npbe.ramzihijjawi.me/play', data, config)
-                                          stillPaused = true;
-                                                }
-                                                  
-}}}
+
 async function play(uri) {
     if (spotify == true) {
       stillPaused = false;
-          if (stillPaused == false) {
+          if (playing == false) {
                   if (document.cookie.split(document.location.search.split('=')[1]+"=")[1] == undefined){
-                          let data = {'session': `${document.cookie.split('spotify=')[1].split(';')[0]}`, 'uris':uri}
-                                  await axios.put('https://npbe.ramzihijjawi.me/play', data, config)
-                                          stillPaused = false;
+                      let data = {'session': `${document.cookie.split('spotify=')[1].split(';')[0]}`, 'uris':uri}
+                      await axios.put('https://npbe.ramzihijjawi.me/play', data, config)
+                      playing = true;
   }}}}
 
   
@@ -61,15 +53,19 @@ const interval = setInterval(async function() {
       `<span class="muted">by</span> <a href="${getDataJSON.item.album.artists[0].external_urls.spotify}">${getDataJSON.item.album.artists[0].name}</a>`,
     )
     if (getDataJSON.is_playing) {
+      play([getDataJSON.item.uri])
+      playing = true;
       stillPaused = false;
       //changeIfChanged($('#status'), playingStatement)
       addClass($('#album-art'), 'spin')
       removeClass($('#album-art'), 'pause-spin')
     }
     if (!getDataJSON.is_playing) {
+      playing = false;
       changeIfChanged($('#status'), 'Paused')
       addClass($('#album-art'), 'pause-spin')
       pause([getDataJSON.item.uri]);
+      stillPaused = true;
     }
     bar = document.getElementById('progressBar')
     bar.style.width = `${(getDataJSON.progress_ms/getDataJSON.item.duration_ms)*100}%`

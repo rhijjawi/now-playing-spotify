@@ -41,6 +41,7 @@ const interval = setInterval(async function() {
     changeIfChanged($('#title'), `<a>Room not found</a>`)
     changeIfChanged($('#status'), '')}
     changeIfChanged($('#link_cont'), '')
+    changeImageIfChanged($('#album-art'), './sad.png')
   }
   else {
     //let volume = `@ ${getDataJSON.device.volume_percent}% volume`

@@ -18,12 +18,12 @@ async function pause(uri) {
         stillPaused = true;
       }
   }}}
-async function pause(uri) {
+async function play(uri) {
     if (spotify == true) {
           if (stillPaused == false) {
                   if (document.cookie.split(document.location.search.split('=')[1]+"=")[1] == undefined){
                           let data = {'session': `${document.cookie.split('spotify=')[1].split(';')[0]}`, 'uris':uri}
-                                  await axios.put('https://npbe.ramzihijjawi.me/pause', data, config)
+                                  await axios.put('https://npbe.ramzihijjawi.me/play', data, config)
                                           stillPaused = true;
                                                 }
                                                   

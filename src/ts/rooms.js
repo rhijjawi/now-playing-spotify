@@ -40,6 +40,7 @@ const interval = setInterval(async function() {
     if (getDataJSON.error == 'room_not_found') {
     changeIfChanged($('#title'), `<a>Room not found</a>`)
     changeIfChanged($('#status'), '')}
+    changeIfChanged($('#link_cont'), '')
   }
   else {
     //let volume = `@ ${getDataJSON.device.volume_percent}% volume`
@@ -73,7 +74,7 @@ const interval = setInterval(async function() {
     bar.style.width = `${(getDataJSON.progress_ms/getDataJSON.item.duration_ms)*100}%`
 
     let session_token = document.cookie.split('spotify=')[1].split(';')[0]
-    document.getElementById('link').href = window.location.href;
+    .href = window.location.href;
     if (session_token == undefined) {}
     else {spotify = true}
     if (spotify == true) {

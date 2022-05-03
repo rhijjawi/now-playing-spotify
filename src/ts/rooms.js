@@ -11,28 +11,30 @@ let playing = false;
 
 document.addEventListener('DOMContentLoaded', async function() {
   let n = await axios.get(`https://npbe.ramzihijjawi.me/room${document.location.search}`)
-  document.title = `${n.headers}'s Spotify Room`
+  document.title = `${n.headers["host"]}'s Spotify Room`
 });
 
 async function pause(uri) {
-  if (spotify == true) {
+  if (document.cookie.split(window.location.search.split('=')[1])[1] == undefined){
+    if (spotify == true) {
       if (stillPaused == false) {
         if (document.cookie.split(document.location.search.split('=')[1]+"=")[1] == undefined){
         let data = {'session': `${document.cookie.split('spotify=')[1].split(';')[0]}`, 'uris':uri}
         await axios.put('https://npbe.ramzihijjawi.me/pause', data, config)
         stillPaused = true;
       }
-  }}}
+  }}}}
 
 async function play(uri) {
+  if (document.cookie.split(window.location.search.split('=')[1])[1] == undefined){
     if (spotify == true) {
       stillPaused = false;
-          if (playing == false) {
-                  if (document.cookie.split(document.location.search.split('=')[1]+"=")[1] == undefined){
-                      let data = {'session': `${document.cookie.split('spotify=')[1].split(';')[0]}`, 'uris':uri}
-                      await axios.put('https://npbe.ramzihijjawi.me/play', data, config)
-                      playing = true;
-  }}}}
+        if (playing == false) {
+                if (document.cookie.split(document.location.search.split('=')[1]+"=")[1] == undefined){
+                    let data = {'session': `${document.cookie.split('spotify=')[1].split(';')[0]}`, 'uris':uri}
+                    await axios.put('https://npbe.ramzihijjawi.me/play', data, config)
+                    playing = true;
+  }}}}}
 
   
 const interval = setInterval(async function() {

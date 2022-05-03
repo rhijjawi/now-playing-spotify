@@ -9,7 +9,7 @@ let stillPaused = false;
 let currentSong = '';
 let playing = false;
 
-document.addEventListener('DOMContentLoaded', async function() {
+document.addEventListener('load', async function() {
   let n = await axios.get(`https://npbe.ramzihijjawi.me/room${document.location.search}`)
   document.title = `${n.headers["host"]}'s Spotify Room`
 });

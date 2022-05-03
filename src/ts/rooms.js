@@ -8,7 +8,11 @@ let config = {headers: {'Content-Type' : 'application/json','Authorisation' : 'B
 let stillPaused = false;
 let currentSong = '';
 let playing = false;
-//
+
+document.addEventListener('DOMContentLoaded', async function() {
+  let n = await axios.get(`https://npbe.ramzihijjawi.me/room${document.location.search}`)
+  document.title = `${n.headers}'s Spotify Room`
+});
 
 async function pause(uri) {
   if (spotify == true) {

@@ -51,7 +51,8 @@ async function getUser() {
 }
 
 document.getElementById('makeroom').addEventListener('click', async function makeroom() {
-    let r = await axios.post('https://npbe.ramzihijjawi.me/rooms', {'cookie': `${document.cookie.split('spotify=')[1].split(';')[0]}`})
+    let m = await axios.post('https://npbe.ramzihijjawi.me/me', {'cookie': `${document.cookie.split('spotify=')[1].split(';')[0]}`})
+    let r = await axios.post('https://npbe.ramzihijjawi.me/rooms', {'cookie': `${document.cookie.split('spotify=')[1].split(';')[0]}`, 'username':m.data.display_name})
     document.cookie = r.data.set
     window.open(r.data.redir)
 });

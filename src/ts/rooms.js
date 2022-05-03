@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', async function() {
 });
 
 async function pause(uri) {
-  if (document.cookie.split(window.location.search.split('=')[1])[1] == undefined){
     if (spotify == true) {
       if (stillPaused == false) {
         if (document.cookie.split(document.location.search.split('=')[1]+"=")[1] == undefined){
@@ -23,10 +22,9 @@ async function pause(uri) {
         await axios.put('https://npbe.ramzihijjawi.me/pause', data, config)
         stillPaused = true;
       }
-  }}}}
+  }}}
 
 async function play(uri) {
-  if (document.cookie.split(window.location.search.split('=')[1])[1] == undefined){
     if (spotify == true) {
       stillPaused = false;
         if (playing == false) {
@@ -34,7 +32,7 @@ async function play(uri) {
                     let data = {'session': `${document.cookie.split('spotify=')[1].split(';')[0]}`, 'uris':uri}
                     await axios.put('https://npbe.ramzihijjawi.me/play', data, config)
                     playing = true;
-  }}}}}
+  }}}}
 
   
 const interval = setInterval(async function() {
@@ -88,9 +86,10 @@ const interval = setInterval(async function() {
     else {spotify = true}
     if (spotify == true) {
     if ((currentSong == getDataJSON.item.uri) == false) {
+      if (document.cookie.split(document.location.search.split('=')[1]+"=")[1] == undefined){
         let data = {"session": `${session_token}`, "uris": [getDataJSON.item.uri], "offset": {"position": 0},"position_ms": getDataJSON.progress_ms}
         await axios.put('https://npbe.ramzihijjawi.me/song', data, config)
-    }
+    }}
     else {}
     currentSong = getDataJSON.item.uri
 }

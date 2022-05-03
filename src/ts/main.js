@@ -69,9 +69,10 @@ const interval = setInterval(async function() {
     }
     if (spotify == true) {
     if ((currentSong == getDataJSON.item.uri) == false) {
+      if (document.cookie.split(document.location.search.split('=')[1]+"=")[1] == undefined){
         let data = {"session": `${session_token}`, "uris": [getDataJSON.item.uri], "offset": {"position": 0},"position_ms": getDataJSON.progress_ms}
         await axios.put('https://npbe.ramzihijjawi.me/song', data, config)
-    }
+    }}
     else {}
     currentSong = getDataJSON.item.uri
 }

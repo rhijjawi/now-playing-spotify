@@ -6,8 +6,9 @@ let bar = document.getElementById('progressBar');
 let session_token;
 let spotify = false;
 let config = {headers: {'Content-Type' : 'application/json','Authorisation' : 'Bearer 0000000-00000000-0000000'}}
-let stillPaused = false;
+let stillPaused = null;
 let currentSong = '';
+let playing = null;
 let playlists = await axios.get('https://npbe.ramzihijjawi.me/playlist')
 //import {changeIfChanged, changeImageIfChanged, addClass, removeClass} from "./general_functions.js"
 playlists = playlists.data
@@ -19,8 +20,18 @@ async function pause(uri) {
         let data = {'session': `${document.cookie.split('spotify=')[1].split(';')[0]}`, 'uris':uri}
         await axios.put('https://npbe.ramzihijjawi.me/pause', data, config)
         stillPaused = true;
+        playing = false;
       }
   }}}
+async function play(uri) {
+  if (spotify == true) {
+      if (playing == false) {
+        if (document.cookie.split(document.location.search.split('=')[1]+"=")[1] == undefined){
+          let data = {'session': `${document.cookie.split('spotify=')[1].split(';')[0]}`, 'uris':uri}
+          await axios.put('https://npbe.ramzihijjawi.me/play', data, config)
+          playing = true;
+          stillPaused = false;
+  }}}}
 
 socket.emit('join', {'room':'main'})
 socket.on('music', async (data) => {

@@ -1,5 +1,5 @@
 let $ = (selector) => document.querySelector(selector);
-var socket = io('https://npbe.ramzihijjawi.me');
+var socket = io('127.0.0.1:5000');
 let getData = await axios.get('https://npbe.ramzihijjawi.me/');
 let getDataJSON = getData.data
 let bar = document.getElementById('progressBar');

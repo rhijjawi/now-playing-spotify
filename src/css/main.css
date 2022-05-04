@@ -156,7 +156,10 @@ a:hover {
   background-color: red;
   transition: width 0ms;
 }
-
+.small_icon {
+  padding-left: 10px;
+  width: 35px;
+}
 .track-info {
   display: flex;
   text-align: center;

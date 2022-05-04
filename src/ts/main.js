@@ -22,11 +22,8 @@ async function pause(uri) {
       }
   }}}
     
-
-const interval = setInterval(async function() {
-  getData = await axios.get('https://npbe.ramzihijjawi.me/')
-  getDataJSON = getData.data
-  
+socket.on('music', async (data) => {
+  getDataJSON = data
   if(getDataJSON.hasOwnProperty('error')){
     if (getDataJSON.error == 'room_not_found') {changeIfChanged($('#title'), `<a>Room not found</a>`)}
     else {changeIfChanged($('#title'), `<a>${getDataJSON.error}</a>`)}
@@ -75,8 +72,6 @@ const interval = setInterval(async function() {
     bar = document.getElementById('progressBar')
     bar.style.width = `${(getDataJSON.progress_ms/getDataJSON.item.duration_ms)*100}%`
 
-
-
     let session_token = document.cookie.split('spotify=')[1].split(';')[0]
     document.getElementById('link').href = window.location.href;
     if (session_token == undefined) {}
@@ -93,9 +88,8 @@ const interval = setInterval(async function() {
     }}
     else {}
     currentSong = getDataJSON.item.uri
-}
+}}});
 
   
-  
-}}, 1000)
+
 

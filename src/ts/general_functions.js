@@ -1,3 +1,4 @@
+let $ = (selector) => document.querySelector(selector);
 function changeIfChanged(el, content) {
     if (el.innerHTML !== content) {
       el.innerHTML = content

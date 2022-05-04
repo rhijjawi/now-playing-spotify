@@ -1,4 +1,5 @@
 let $ = (selector) => document.querySelector(selector);
+var socket = io('https://npbe.ramzihijjawi.me');
 function changeIfChanged(el, content) {
     if (el.innerHTML !== content) {
       el.innerHTML = content

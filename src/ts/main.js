@@ -31,7 +31,6 @@ const interval = setInterval(async function() {
     if (getDataJSON.error == 'room_not_found') {changeIfChanged($('#title'), `<a>Room not found</a>`)}
     else {changeIfChanged($('#title'), `<a>${getDataJSON.error}</a>`)}
     changeIfChanged($('#status'), '')
-    changeIfChanged($('#link_cont'), '')
     changeIfChanged($('#album'), '')
     changeIfChanged($('#artist'),'')
     changeImageIfChanged($('#album-art'), './sad.png')
@@ -39,7 +38,6 @@ const interval = setInterval(async function() {
   else if (getDataJSON.hasOwnProperty('status')){
     if (getDataJSON.error == 'not_playing') {changeIfChanged($('#title'), `<a>Not Playing</a>`)}
     changeIfChanged($('#status'), '')
-    changeIfChanged($('#link_cont'), '')
     changeIfChanged($('#album'), '')
     changeIfChanged($('#artist'),'')
     changeImageIfChanged($('#album-art'), './sad.png')

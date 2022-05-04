@@ -53,9 +53,11 @@ async function getUser() {
 
 document.getElementById('makeroom').addEventListener('click', async function makeroom() {
     let m = await axios.post('https://npbe.ramzihijjawi.me/me', {'cookie': `${document.cookie.split('spotify=')[1].split(';')[0]}`})
-    let r = await axios.post('https://npbe.ramzihijjawi.me/rooms', {'cookie': `${document.cookie.split('spotify=')[1].split(';')[0]}`, 'username':m.data.display_name})
-    document.cookie = r.data.set
-    window.open(r.data.redir)
+    socket.emit('make_room', {'cookie': `${document.cookie.split('spotify=')[1].split(';')[0]}`, 'username':m.data.display_name})
+    socket.on('room_created', (data) => {
+        document.cookie = data.set
+        window.open(data.redir)
+    });
 });
 
 async function setTitle() {

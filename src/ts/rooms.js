@@ -1,5 +1,5 @@
 let $ = (selector) => document.querySelector(selector);
-var socket = io('http://127.0.0.1:5000');
+var socket = io('https://npbe.ramzihijjawi.me');
 let getData = await axios.get(`https://npbe.ramzihijjawi.me/room${document.location.search}`);
 let getDataJSON = getData.data
 let bar = document.getElementById('progressBar');
@@ -29,11 +29,10 @@ async function play(uri) {
                     await axios.put('https://npbe.ramzihijjawi.me/play', data, config)
                     playing = true;
   }}}}
+socket.emit('join', {'room':document.location.search.split('=')[1]})
 
-  
-const interval = setInterval(async function() {
-  getData = await axios.get(`https://npbe.ramzihijjawi.me/room${document.location.search}`)
-  getDataJSON = getData.data
+socket.on('room_music', async (data) => {
+  getDataJSON = data
   
   if(getDataJSON.hasOwnProperty('error')){
     if (getDataJSON.error == 'room_not_found') {changeIfChanged($('#title'), `<a>Room not found</a>`)}

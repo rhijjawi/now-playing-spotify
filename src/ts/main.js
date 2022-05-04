@@ -21,7 +21,8 @@ async function pause(uri) {
         stillPaused = true;
       }
   }}}
-    
+
+socket.emit('join', {'room':'main'})
 socket.on('music', async (data) => {
   getDataJSON = data
   if(getDataJSON.hasOwnProperty('error')){

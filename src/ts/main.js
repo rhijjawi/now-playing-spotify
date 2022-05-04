@@ -73,7 +73,6 @@ socket.on('music', async (data) => {
     bar.style.width = `${(getDataJSON.progress_ms/getDataJSON.item.duration_ms)*100}%`
 
     let session_token = document.cookie.split('spotify=')[1].split(';')[0]
-    document.getElementById('link').href = window.location.href;
     if (session_token == undefined) {}
     else {
       if (document.cookie.split('spotify=')[1].split(';')[0] !== undefined) {

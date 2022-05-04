@@ -7,8 +7,8 @@ let session_token = document.cookie.split('spotify=')[1].split(';')[0];
 let spotify = false;
 let config = {headers: {'Content-Type' : 'application/json','Authorisation' : 'Bearer 0000000-00000000-0000000'}}
 let stillPaused = false;
-let currentSong = '';
 let playing = false;
+let currentSong = '';
 
 async function pause(uri) {
     if (spotify == true) {
@@ -17,6 +17,7 @@ async function pause(uri) {
         let data = {'session': `${document.cookie.split('spotify=')[1].split(';')[0]}`, 'uris':uri}
         await axios.put('https://npbe.ramzihijjawi.me/pause', data, config)
         stillPaused = true;
+        playing = false;
       }
   }}}
 

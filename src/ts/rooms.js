@@ -30,11 +30,11 @@ async function play(uri) {
                     await axios.put('https://npbe.ramzihijjawi.me/play', data, config)
                     playing = true;
   }}}}
-socket.emit('join', {'room':document.location.search.split('=')[1]})
 
+socket.emit('join', {'room':document.location.search.split('=')[1]})
 socket.on('room_music', async (data) => {
-  getDataJSON = data
   
+  getDataJSON = data
   if(getDataJSON.hasOwnProperty('error')){
     if (getDataJSON.error == 'room_not_found') {changeIfChanged($('#title'), `<a>Room not found</a>`)}
     else {changeIfChanged($('#title'), `<a>${getDataJSON.error}</a>`)}

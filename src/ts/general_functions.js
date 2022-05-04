@@ -56,11 +56,12 @@ document.getElementById('makeroom').addEventListener('click', async function mak
     document.cookie = r.data.set
     window.open(r.data.redir)
 });
+
 async function setTitle() {
     let n = await axios.get(`https://npbe.ramzihijjawi.me/room${document.location.search}`)
+    if (n.headers["host"] !== undefined) {
     document.title = `${n.headers["host"]}'s Spotify Room`
+    }
 }
 document.addEventListener('DOMContentLoaded', getUser());
-document.addEventListener('DOMContentLoaded', setTitle());
-
 

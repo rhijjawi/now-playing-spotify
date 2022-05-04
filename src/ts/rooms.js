@@ -36,14 +36,16 @@ const interval = setInterval(async function() {
   getDataJSON = getData.data
   
   if(getDataJSON.hasOwnProperty('error')){
-    if (getDataJSON.error == 'not_playing') {changeIfChanged($('#title'), `<a>Not Playing</a>`)} 
-    else if (getDataJSON.error == 'room_not_found') {changeIfChanged($('#title'), `<a>Room not found</a>`)}
+    if (getDataJSON.error == 'room_not_found') {changeIfChanged($('#title'), `<a>Room not found</a>`)}
     else {changeIfChanged($('#title'), `<a>${getDataJSON.error}</a>`)}
     changeIfChanged($('#status'), '')
     changeIfChanged($('#link_cont'), '')
     changeIfChanged($('#album'), '')
     changeIfChanged($('#artist'),'')
     changeImageIfChanged($('#album-art'), './sad.png')
+  }
+  else if (getDataJSON.hasOwnProperty('status')){
+    if (getDataJSON.error == 'not_playing') {changeIfChanged($('#title'), `<a>Not Playing</a>`)}
   }
   else {
   

@@ -1,4 +1,5 @@
 let $ = (selector) => document.querySelector(selector);
+var socket = io('https://npbe.ramzihijjawi.me');
 let getData = await axios.get(`https://npbe.ramzihijjawi.me/room${document.location.search}`);
 let getDataJSON = getData.data
 let bar = document.getElementById('progressBar');
@@ -8,7 +9,6 @@ let config = {headers: {'Content-Type' : 'application/json','Authorisation' : 'B
 let stillPaused = false;
 let currentSong = '';
 let playing = false;
-
 
 async function pause(uri) {
     if (spotify == true) {
@@ -46,6 +46,11 @@ const interval = setInterval(async function() {
   }
   else if (getDataJSON.hasOwnProperty('status')){
     if (getDataJSON.error == 'not_playing') {changeIfChanged($('#title'), `<a>Not Playing</a>`)}
+    changeIfChanged($('#status'), '')
+    changeIfChanged($('#link_cont'), '')
+    changeIfChanged($('#album'), '')
+    changeIfChanged($('#artist'),'')
+    changeImageIfChanged($('#album-art'), './sad.png')
   }
   else {
   

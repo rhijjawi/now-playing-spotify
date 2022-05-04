@@ -1,4 +1,5 @@
 let $ = (selector) => document.querySelector(selector);
+var socket = io('https://npbe.ramzihijjawi.me');
 let getData = await axios.get('https://npbe.ramzihijjawi.me/');
 let getDataJSON = getData.data
 let bar = document.getElementById('progressBar');
@@ -26,10 +27,23 @@ const interval = setInterval(async function() {
   getData = await axios.get('https://npbe.ramzihijjawi.me/')
   getDataJSON = getData.data
   
-  if(getDataJSON.hasOwnProperty('status')){
-    if (getDataJSON.status == 'not_playing') {changeIfChanged($('#title'), `<a>Not Playing</a>`)} 
-    else {}
-    }
+  if(getDataJSON.hasOwnProperty('error')){
+    if (getDataJSON.error == 'room_not_found') {changeIfChanged($('#title'), `<a>Room not found</a>`)}
+    else {changeIfChanged($('#title'), `<a>${getDataJSON.error}</a>`)}
+    changeIfChanged($('#status'), '')
+    changeIfChanged($('#link_cont'), '')
+    changeIfChanged($('#album'), '')
+    changeIfChanged($('#artist'),'')
+    changeImageIfChanged($('#album-art'), './sad.png')
+  }
+  else if (getDataJSON.hasOwnProperty('status')){
+    if (getDataJSON.error == 'not_playing') {changeIfChanged($('#title'), `<a>Not Playing</a>`)}
+    changeIfChanged($('#status'), '')
+    changeIfChanged($('#link_cont'), '')
+    changeIfChanged($('#album'), '')
+    changeIfChanged($('#artist'),'')
+    changeImageIfChanged($('#album-art'), './sad.png')
+  }
   else {
     let volume = `@ ${getDataJSON.device.volume_percent}% volume`
     let playingStatement = `Playing on <span class="bold">${getDataJSON['device']['name']}</span> ${volume}`

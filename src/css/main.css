@@ -1,10 +1,10 @@
+@import url('./fonts/SourceCodePro-Regular.ttf');
+
 :root {
   --background: #0b0b0b;
-
   --text-primary: #ffffff;
   --text-muted: #656565;
-
-  --font-family: 'Poppins', sans-serif;
+  --font-family: 'Source Code Pro', monospace;
 }
 
 html * {

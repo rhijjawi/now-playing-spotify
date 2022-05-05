@@ -45,7 +45,8 @@ socket.on('room_music', async (data) => {
     changeImageIfChanged($('#album-art'), './sad.png')
   }
   else if (getDataJSON.hasOwnProperty('status')){
-    if (getDataJSON.error == 'not_playing') {changeIfChanged($('#title'), `<a>Not Playing</a>`)}
+    if (getDataJSON.status == 'not_playing') {
+    changeIfChanged($('#title'), `<a>Not Playing</a>`)}
     changeIfChanged($('#status'), '')
     changeIfChanged($('#link_cont'), '')
     changeIfChanged($('#album'), '')

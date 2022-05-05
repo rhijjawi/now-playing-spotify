@@ -54,7 +54,7 @@ socket.on('room_music', async (data) => {
     changeImageIfChanged($('#album-art'), './sad.png')
   }
   else {
-  
+    changeIfChanged($('#status'), '')
     //let volume = `@ ${getDataJSON.device.volume_percent}% volume`
     //let playingStatement = `Playing on <span class="bold">${getDataJSON['device']['name']}</span> ${volume}`
     changeImageIfChanged($('#album-art'), getDataJSON.item.album.images[0].url)
@@ -77,7 +77,7 @@ socket.on('room_music', async (data) => {
     }
     if (!getDataJSON.is_playing) {
       playing = false;
-      changeIfChanged($('#status'), 'Paused')
+      //changeIfChanged($('#status'), 'Paused')
       addClass($('#album-art'), 'pause-spin')
       pause([getDataJSON.item.uri]);
       stillPaused = true;

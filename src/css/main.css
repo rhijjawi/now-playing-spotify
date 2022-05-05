@@ -12,11 +12,12 @@ html * {
 
 h1 {
   font-size: xxx-large;
-    align-items: center;
-    position: relative;
-    align-items: center;
-    justify-content: center;
-    display: flex;
+  margin: 0;
+  align-items: center;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  display: flex;
 }
 html,
 body {

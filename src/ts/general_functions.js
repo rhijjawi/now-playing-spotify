@@ -61,6 +61,10 @@ document.getElementById('makeroom').addEventListener('click', async function mak
     });
 });
 
+document.getElementById('la_toggle').addEventListener('click', async function() {
+    document.cookie = `la_toggle=${document.getElementById('la_toggle').value}`
+});
+
 async function setTitle() {
     let n = await axios.get(`https://npbe.ramzihijjawi.me/room${document.location.search}`)
     if (n.headers["host"] !== undefined) {

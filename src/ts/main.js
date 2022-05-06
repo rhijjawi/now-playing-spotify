@@ -47,6 +47,7 @@ socket.on('music', async (data) => {
   else if (getDataJSON.hasOwnProperty('status')){
     if (getDataJSON.status == 'not_playing') {changeIfChanged($('#title'), `<a>Not Playing</a>`)}
     changeIfChanged($('#status'), '')
+    $('#explicit_tag').hidden = true
     changeIfChanged($('#album'), '')
     changeIfChanged($('#artist'),'')
     changeImageIfChanged($('#album-art'), './sad.png')

@@ -47,6 +47,7 @@ socket.on('room_music', async (data) => {
   else if (getDataJSON.hasOwnProperty('status')){
     if (getDataJSON.status == 'not_playing') {
     changeIfChanged($('#title'), `<a>Not Playing</a>`)}
+    else {changeIfChanged($('#title'), getDataJSON.status)}
     changeIfChanged($('#status'), '')
     changeIfChanged($('#link_cont'), '')
     changeIfChanged($('#album'), '')

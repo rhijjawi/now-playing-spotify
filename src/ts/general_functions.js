@@ -27,6 +27,10 @@ function rmEventListener(func) {
     document.getElementById('prep_btn').removeEventListener('click', func)
 }
 
+function listenAlong() {
+    return document.getElementById('la_toggle').checked
+}
+
 async function getUser() {
     if (window.location.search !== ''){
         document.getElementById('link').href = window.location.href
@@ -47,7 +51,6 @@ async function getUser() {
             document.getElementsByClassName('track-info')[0].appendChild(x)
             document.getElementById('prep_btn').innerHTML = `Signed in as ${r.data.display_name}`;
             document.getElementById('prep_btn').hidden = true;
-            
         }
     }
 }
@@ -62,13 +65,13 @@ document.getElementById('makeroom').addEventListener('click', async function mak
 });
 
 document.getElementById('la_toggle').addEventListener('click', async function() {
-    document.cookie = `la_toggle=${document.getElementById('la_toggle').value}`
+    document.cookie = `la_toggle=${document.getElementById('la_toggle').checked}`;
 });
 
 async function setTitle() {
     let n = await axios.get(`https://npbe.ramzihijjawi.me/room${document.location.search}`)
     if (n.headers["host"] !== undefined) {
-    document.title = `${n.headers["host"]}'s Spotify Room`
+    document.title = `${n.headers["host"]}'s Spotify Room`;
     }
 }
 document.addEventListener('DOMContentLoaded', getUser());

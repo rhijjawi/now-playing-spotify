@@ -15,6 +15,7 @@ playlists = playlists.data
 
 async function pause(uri) {
   if (spotify == true) {
+    if (listenAlong() == true) {
       if (stillPaused == false) {
         if (document.cookie.split(document.location.search.split('=')[1]+"=")[1] == undefined){
         let data = {'session': `${document.cookie.split('spotify=')[1].split(';')[0]}`, 'uris':uri}
@@ -22,16 +23,17 @@ async function pause(uri) {
         stillPaused = true;
         playing = false;
       }
-  }}}
+  }}}}
 async function play(uri) {
   if (spotify == true) {
+    if (listenAlong() == true) {
       if (playing == false) {
         if (document.cookie.split(document.location.search.split('=')[1]+"=")[1] == undefined){
           let data = {'session': `${document.cookie.split('spotify=')[1].split(';')[0]}`, 'uris':uri}
           await axios.put('https://npbe.ramzihijjawi.me/play', data, config)
           playing = true;
           stillPaused = false;
-  }}}}
+  }}}}}
 
 socket.emit('join', {'room':'main'})
 socket.on('music', async (data) => {
@@ -95,9 +97,10 @@ socket.on('music', async (data) => {
     if (spotify == true) {
     if ((currentSong == getDataJSON.item.uri) == false) {
       if (document.cookie.split(document.location.search.split('=')[1]+"=")[1] == undefined){
-        let data = {"session": `${session_token}`, "uris": [getDataJSON.item.uri], "offset": {"position": 0},"position_ms": getDataJSON.progress_ms}
-        await axios.put('https://npbe.ramzihijjawi.me/song', data, config)
-    }}
+        if (listenAlong() == true) {
+          let data = {"session": `${session_token}`, "uris": [getDataJSON.item.uri], "offset": {"position": 0},"position_ms": getDataJSON.progress_ms}
+          await axios.put('https://npbe.ramzihijjawi.me/song', data, config)
+    }}}
     else {}
     currentSong = getDataJSON.item.uri
 }}});

@@ -34,22 +34,7 @@
   <script src="ts/spotify.js" type="module" defer></script>
   <script src="ts/rooms.js" type="module" defer></script>
   <script src="ts/general_functions.js" defer></script>
-  <script>
-  document.addEventListener("DOMContentLoaded", function(event) {
-    let text = document.getElementById('session')
-    text.addEventListener("keyup", function(event) {
-    // Number 13 is the "Enter" key on the keyboard
-    if (event.keyCode === 13) {
-    // Cancel the default action, if needed
-    event.preventDefault();
-    let session_token = text.value
-    document.cookie = `spotify=${session_token}`
-    console.log(session_token)
-    text.hidden = true
-  }})
-  });
-  
-</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/5.1.0/intro.min.js" integrity="sha512-B0B1bdTGi9XHtoCINbtR6z9Vi8IYvvtImIE8KWMtqWAVUt2Wn2k69GxM7ya/3rQcz/Pgm/o1WcDU347/5k202A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body>

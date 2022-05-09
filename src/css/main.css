@@ -257,6 +257,12 @@ a:hover {
   -o-animation-play-state: paused;
 }
 
+.title_container{
+  max-width: fit-content;
+  width: auto;
+  margin: auto;
+}
+
 .footer {
   position: fixed;
   text-align: center;

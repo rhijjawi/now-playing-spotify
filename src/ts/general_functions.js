@@ -26,13 +26,7 @@ if (el.classList.contains(className)) {
 function rmEventListener(func) {
     document.getElementById('prep_btn').removeEventListener('click', func)
 }
-document.addEventListener("DOMContentLoaded", () => {
-    for (i of document.cookie.split('')) {
-        if (i.split('').startsWith('la_toggle')){}
-        //$('#la_toggle').checked = 
 
-    }
-})
 function listenAlong() {
     return $('#la_toggle').checked
 }
@@ -40,7 +34,7 @@ function listenAlong() {
 function getAuth() {
     for (i of document.cookie.split(' ')) {
         if (i.startsWith('spotify')) {
-            return i
+            return i.split('=')[1]
         }
     }
     return false
@@ -86,7 +80,15 @@ document.getElementById('la_toggle').addEventListener('click', async function() 
 async function setTitle() {
     let n = await axios.get(`https://npbe.ramzihijjawi.me/room${document.location.search}`)
     if (n.headers["host"] !== undefined) {
-    document.title = `${n.headers["host"]}'s Spotify Room`;
+        document.title = `${n.headers["host"]}'s Spotify Room`;
     }
 }
+document.addEventListener("DOMContentLoaded", () => {
+    for (i of document.cookie.split(' ')) {
+        if (i.startsWith('la_toggle')){
+            $('#la_toggle').checked = i.split('=')[1]
+        }
+
+    }
+});
 document.addEventListener('DOMContentLoaded', getUser());

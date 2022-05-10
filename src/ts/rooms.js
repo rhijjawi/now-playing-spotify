@@ -8,6 +8,7 @@ let config = {headers: {'Content-Type' : 'application/json','Authorisation' : 'B
 let stillPaused = false;
 let playing = false;
 let currentSong = '';
+
 socket.emit('join', {'room':document.location.search.split('=')[1]})
 
 async function pause(uri) {
@@ -42,6 +43,7 @@ socket.on('room_music', async (data) => {
     changeIfChanged($('#album'), '')
     changeIfChanged($('#artist'),'')
     changeImageIfChanged($('#album-art'), './sad.png')
+    $('#la_toggle').parentElement.style.display='none'
   }
   else if (getDataJSON.hasOwnProperty('status')){
     if (getDataJSON.status == 'not_playing') {
@@ -52,8 +54,10 @@ socket.on('room_music', async (data) => {
     changeIfChanged($('#album'), '')
     changeIfChanged($('#artist'),'')
     changeImageIfChanged($('#album-art'), './sad.png')
+    $('#la_toggle').parentElement.style.display='none'
   }
   else {
+    $('#la_toggle').parentElement.style.display='inline-block'
     changeIfChanged($('#status'), '')
     //let volume = `@ ${getDataJSON.device.volume_percent}% volume`
     //let playingStatement = `Playing on <span class="bold">${getDataJSON['device']['name']}</span> ${volume}`

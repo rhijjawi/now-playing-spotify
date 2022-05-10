@@ -47,6 +47,7 @@ socket.on('music', async (data) => {
     changeIfChanged($('#album'), '')
     changeIfChanged($('#artist'),'')
     changeImageIfChanged($('#album-art'), './sad.png')
+    $('#la_toggle').parentElement.style.display='none'
   }
   else if (getDataJSON.hasOwnProperty('status')){
     if (getDataJSON.status == 'not_playing') {changeIfChanged($('#title'), `<a>Not Playing</a>`)}
@@ -56,8 +57,10 @@ socket.on('music', async (data) => {
     changeIfChanged($('#artist'),'')
     changeImageIfChanged($('#album-art'), './sad.png')
     $('#la_toggle').disabled = true
+    $('#la_toggle').parentElement.style.display='none'
   }
   else {
+    $('#la_toggle').parentElement.style.display='inline-block'
     $('#la_toggle').disabled = false
     let volume = `@ ${getDataJSON.device.volume_percent}% volume`
     let playingStatement = `Playing on <span class="bold">${getDataJSON['device']['name']}</span> ${volume}`

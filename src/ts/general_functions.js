@@ -62,6 +62,12 @@ async function getUser() {
             document.getElementById('prep_btn').hidden = true;
         }
     }
+    else {
+        document.getElementById('prep_btn').hidden = false;
+        $('#prep_btn').addEventListener('click', async function login() {
+            window.open('https://npbe.ramzihijjawi.me/login', '_self')
+        })
+    }
 }
 
 document.getElementById('makeroom').addEventListener('click', async function makeroom() {

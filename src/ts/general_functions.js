@@ -27,8 +27,11 @@ function rmEventListener(func) {
     document.getElementById('prep_btn').removeEventListener('click', func)
 }
 document.addEventListener("DOMContentLoaded", () => {
-    for (i of document.cookie)
-    $('#la_toggle').checked = 
+    for (i of document.cookie.split('')) {
+        if (i.split('').startsWith('la_toggle')){}
+        //$('#la_toggle').checked = 
+
+    }
 })
 function listenAlong() {
     return $('#la_toggle').checked

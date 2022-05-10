@@ -73,6 +73,9 @@ document.getElementById('makeroom').addEventListener('click', async function mak
             window.open(data.redir)
         });
     }
+    else {
+        window.open('https://npbe.ramzihijjawi.me/login', '_self')
+    }
 });
 
 document.getElementById('la_toggle').addEventListener('click', async function() {

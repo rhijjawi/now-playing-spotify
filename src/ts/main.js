@@ -1,7 +1,7 @@
 let $ = (selector) => document.querySelector(selector);
 var socket = io('https://npbe.ramzihijjawi.me');
-let getData = await axios.get('https://npbe.ramzihijjawi.me/');
-let getDataJSON = getData.data
+//let getData = await axios.get('https://npbe.ramzihijjawi.me/');
+//let getDataJSON = getData.data
 let bar = document.getElementById('progressBar');
 let session_token;
 let spotify = false;
@@ -42,6 +42,7 @@ socket.on('music', async (data) => {
     if (getDataJSON.error == 'room_not_found') {changeIfChanged($('#title'), `<a>Room not found</a>`)}
     else {changeIfChanged($('#title'), `<a>${getDataJSON.error}</a>`)}
     changeIfChanged($('#status'), '')
+    $('#explicit_tag').hidden = true
     changeIfChanged($('#album'), '')
     changeIfChanged($('#artist'),'')
     changeImageIfChanged($('#album-art'), './sad.png')

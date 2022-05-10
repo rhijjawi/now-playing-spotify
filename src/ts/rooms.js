@@ -1,7 +1,7 @@
 let $ = (selector) => document.querySelector(selector);
 var socket = io('https://npbe.ramzihijjawi.me');
-let getData = await axios.get(`https://npbe.ramzihijjawi.me/room${document.location.search}`);
-let getDataJSON = getData.data
+//let getData = await axios.get(`https://npbe.ramzihijjawi.me/room${document.location.search}`);
+//let getDataJSON = getData.data
 let bar = document.getElementById('progressBar');
 let session_token = document.cookie.split('spotify=')[1].split(';')[0];
 let spotify = false;
@@ -33,8 +33,7 @@ async function play(uri) {
 
 socket.emit('join', {'room':document.location.search.split('=')[1]})
 socket.on('room_music', async (data) => {
-  
-  getDataJSON = data
+  let getDataJSON = data
   if(getDataJSON.hasOwnProperty('error')){
     if (getDataJSON.error == 'room_not_found') {changeIfChanged($('#title'), `<a>Room not found</a>`)}
     else {changeIfChanged($('#title'), `<a>${getDataJSON.error}</a>`)}

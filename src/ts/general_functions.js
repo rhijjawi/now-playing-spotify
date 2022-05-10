@@ -65,12 +65,14 @@ async function getUser() {
 }
 
 document.getElementById('makeroom').addEventListener('click', async function makeroom() {
-    let m = await axios.post('https://npbe.ramzihijjawi.me/me', {'cookie': `${getAuth()}`})
-    socket.emit('make_room', {'cookie': `${getAuth()}`, 'username':m.data.display_name})
-    socket.on('room_created', (data) => {
-        document.cookie = data.set
-        window.open(data.redir)
-    });
+    if (getAuth() !== false){
+        let m = await axios.post('https://npbe.ramzihijjawi.me/me', {'cookie': `${getAuth()}`})
+        socket.emit('make_room', {'cookie': `${getAuth()}`, 'username':m.data.display_name})
+        socket.on('room_created', (data) => {
+            document.cookie = data.set
+            window.open(data.redir)
+        });
+    }
 });
 
 document.getElementById('la_toggle').addEventListener('click', async function() {

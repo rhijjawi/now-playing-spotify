@@ -36,6 +36,7 @@ async function play(uri) {
   }}}}}
 
 socket.emit('join', {'room':'main'})
+socket.on('disconnect', ()=>{socket.emit('join', {'room':'main'})})
 socket.on('music', async (data) => {
   let getDataJSON = data
   if(getDataJSON.hasOwnProperty('error')){

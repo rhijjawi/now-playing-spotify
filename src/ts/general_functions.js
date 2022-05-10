@@ -26,9 +26,12 @@ if (el.classList.contains(className)) {
 function rmEventListener(func) {
     document.getElementById('prep_btn').removeEventListener('click', func)
 }
-
+document.addEventListener("DOMContentLoaded", () => {
+    for (i of document.cookie)
+    $('#la_toggle').checked = 
+})
 function listenAlong() {
-    return document.getElementById('la_toggle').checked
+    return $('#la_toggle').checked
 }
 
 function getAuth() {
@@ -48,7 +51,7 @@ async function getUser() {
     if(getAuth() !== false) {
         let r = await axios.post('https://npbe.ramzihijjawi.me/me', {'cookie': `${getAuth()}`}, config)
         if (r.data.hasOwnProperty('error')) {
-            document.cookie = "spotify=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            //document.cookie = "spotify=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
             alert(r.data.error)
         }
         else {

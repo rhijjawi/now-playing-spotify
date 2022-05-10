@@ -8,6 +8,7 @@ let config = {headers: {'Content-Type' : 'application/json','Authorisation' : 'B
 let stillPaused = false;
 let playing = false;
 let currentSong = '';
+socket.emit('join', {'room':document.location.search.split('=')[1]})
 
 async function pause(uri) {
     if (spotify == true) {
@@ -30,7 +31,6 @@ async function play(uri) {
               playing = true;
   }}}}
 
-socket.emit('join', {'room':document.location.search.split('=')[1]})
 socket.on('disconnect', ()=>{socket.emit('join', {'room':document.location.search.split('=')[1]})})
 socket.on('room_music', async (data) => {
   let getDataJSON = data
@@ -106,5 +106,8 @@ socket.on('room_music', async (data) => {
 
   
   
-}}, 1000)
+}})
+const interval = setInterval(async function() {
+  socket.emit('keep_alive', {'room':document.location.search.split('=')[1], 'cookie':getAuth()})
+}, 1000);
 

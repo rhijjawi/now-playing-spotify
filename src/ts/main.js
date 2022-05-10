@@ -17,8 +17,8 @@ async function pause(uri) {
   if (spotify == true) {
     if (listenAlong() == true) {
       if (stillPaused == false) {
-        if (document.cookie.split(document.location.search.split('=')[1]+"=")[1] == undefined){
-        let data = {'session': `${document.cookie.split('spotify=')[1].split(';')[0]}`, 'uris':uri}
+        if (getAuth() !== false){
+        let data = {'session': `${getAuth()}`, 'uris':uri}
         await axios.put('https://npbe.ramzihijjawi.me/pause', data, config)
         stillPaused = true;
         playing = false;
@@ -28,8 +28,8 @@ async function play(uri) {
   if (spotify == true) {
     if (listenAlong() == true) {
       if (playing == false) {
-        if (document.cookie.split(document.location.search.split('=')[1]+"=")[1] == undefined){
-          let data = {'session': `${document.cookie.split('spotify=')[1].split(';')[0]}`, 'uris':uri}
+        if (getAuth() !== false){
+          let data = {'session': `${getAuth()}`, 'uris':uri}
           await axios.put('https://npbe.ramzihijjawi.me/play', data, config)
           playing = true;
           stillPaused = false;
@@ -91,19 +91,16 @@ socket.on('music', async (data) => {
     bar = document.getElementById('progressBar')
     bar.style.width = `${(getDataJSON.progress_ms/getDataJSON.item.duration_ms)*100}%`
 
-    let session_token = document.cookie.split('spotify=')[1].split(';')[0]
-    if (session_token == undefined) {}
+    if (getAuth() == false) {}
     else {
-      if (document.cookie.split('spotify=')[1].split(';')[0] !== undefined) {
         spotify = true
-      }
     }
     if (spotify == true) {
-    if ((currentSong == getDataJSON.item.uri) == false) {
-      if (document.cookie.split(document.location.search.split('=')[1]+"=")[1] == undefined){
-        if (listenAlong() == true) {
-          let data = {"session": `${session_token}`, "uris": [getDataJSON.item.uri], "offset": {"position": 0},"position_ms": getDataJSON.progress_ms}
-          await axios.put('https://npbe.ramzihijjawi.me/song', data, config)
+      if ((currentSong == getDataJSON.item.uri) == false) {
+        if (getAuth() !== false){
+          if (listenAlong() == true) {
+            let data = {"session": `${getAuth()}`, "uris": [getDataJSON.item.uri], "offset": {"position": 0},"position_ms": getDataJSON.progress_ms}
+            await axios.put('https://npbe.ramzihijjawi.me/song', data, config)
     }}}
     else {}
     currentSong = getDataJSON.item.uri

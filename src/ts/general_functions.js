@@ -32,9 +32,9 @@ function listenAlong() {
 }
 
 function getAuth() {
-    for (i of document.cookie.split(' ')) {
+    for (i of document.cookie.split('; ')) {
         if (i.startsWith('spotify')) {
-            return i.split('=')[1].split(';')[0]
+            return i.split('=')[1]
         }
     }
     return false
@@ -91,7 +91,12 @@ async function setTitle() {
 document.addEventListener("DOMContentLoaded", () => {
     for (i of document.cookie.split(' ')) {
         if (i.startsWith('la_toggle')){
-            $('#la_toggle').checked = i.split('=')[1].split(';')[0]
+            if (i.split('=')[1] == 'true'){
+                $('#la_toggle').checked = true
+            }
+            else {
+                $('#la_toggle').checked = false
+            }
         }
 
     }

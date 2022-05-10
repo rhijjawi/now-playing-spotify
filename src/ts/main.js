@@ -108,3 +108,5 @@ socket.on('music', async (data) => {
     else {}
     currentSong = getDataJSON.item.uri
 }}});
+
+const interval = setInterval(async function() {if (getAuth(document.location.search.split('=')[1]) == 'isHost') {socket.emit('keep_alive', {'room':'main', 'cookie':getAuth('spotify')})}}, 1000);

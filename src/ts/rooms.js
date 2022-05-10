@@ -111,5 +111,5 @@ socket.on('room_music', async (data) => {
   
   
 }})
-const interval = setInterval(async function() {if (getAuth(document.location.search.split('=')[1] == 'isHost')) {socket.emit('keep_alive', {'room':document.location.search.split('=')[1], 'cookie':getAuth('spotify')})}}, 1000);
+const interval = setInterval(async function() {if (getAuth(document.location.search.split('=')[1]) == 'isHost') {socket.emit('keep_alive', {'room':document.location.search.split('=')[1], 'cookie':getAuth('spotify')})}}, 1000);
 

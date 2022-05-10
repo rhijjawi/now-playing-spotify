@@ -55,8 +55,10 @@ socket.on('music', async (data) => {
     changeIfChanged($('#album'), '')
     changeIfChanged($('#artist'),'')
     changeImageIfChanged($('#album-art'), './sad.png')
+    $('#la_toggle').disabled = true
   }
   else {
+    $('#la_toggle').disabled = false
     let volume = `@ ${getDataJSON.device.volume_percent}% volume`
     let playingStatement = `Playing on <span class="bold">${getDataJSON['device']['name']}</span> ${volume}`
     changeImageIfChanged($('#album-art'), getDataJSON.item.album.images[0].url)
@@ -106,7 +108,3 @@ socket.on('music', async (data) => {
     else {}
     currentSong = getDataJSON.item.uri
 }}});
-
-  
-
-

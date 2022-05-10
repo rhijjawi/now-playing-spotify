@@ -75,4 +75,3 @@ async function setTitle() {
     }
 }
 document.addEventListener('DOMContentLoaded', getUser());
-

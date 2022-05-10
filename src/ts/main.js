@@ -17,8 +17,8 @@ async function pause(uri) {
   if (spotify == true) {
     if (listenAlong() == true) {
       if (stillPaused == false) {
-        if (getAuth() !== false){
-        let data = {'session': `${getAuth()}`, 'uris':uri}
+        if (getAuth('spotify') !== false){
+        let data = {'session': `${getAuth('spotify')}`, 'uris':uri}
         await axios.put('https://npbe.ramzihijjawi.me/pause', data, config)
         stillPaused = true;
         playing = false;
@@ -28,8 +28,8 @@ async function play(uri) {
   if (spotify == true) {
     if (listenAlong() == true) {
       if (playing == false) {
-        if (getAuth() !== false){
-          let data = {'session': `${getAuth()}`, 'uris':uri}
+        if (getAuth('spotify') !== false){
+          let data = {'session': `${getAuth('spotify')}`, 'uris':uri}
           await axios.put('https://npbe.ramzihijjawi.me/play', data, config)
           playing = true;
           stillPaused = false;
@@ -94,15 +94,15 @@ socket.on('music', async (data) => {
     bar = document.getElementById('progressBar')
     bar.style.width = `${(getDataJSON.progress_ms/getDataJSON.item.duration_ms)*100}%`
 
-    if (getAuth() == false) {}
+    if (getAuth('spotify') == false) {}
     else {
         spotify = true
     }
     if (spotify == true) {
       if ((currentSong == getDataJSON.item.uri) == false) {
-        if (getAuth() !== false){
+        if (getAuth('spotify') !== false){
           if (listenAlong() == true) {
-            let data = {"session": `${getAuth()}`, "uris": [getDataJSON.item.uri], "offset": {"position": 0},"position_ms": getDataJSON.progress_ms}
+            let data = {"session": `${getAuth('spotify')}`, "uris": [getDataJSON.item.uri], "offset": {"position": 0},"position_ms": getDataJSON.progress_ms}
             await axios.put('https://npbe.ramzihijjawi.me/song', data, config)
     }}}
     else {}

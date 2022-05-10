@@ -31,9 +31,9 @@ function listenAlong() {
     return $('#la_toggle').checked
 }
 
-function getAuth() {
+function getAuth(cookie) {
     for (i of document.cookie.split('; ')) {
-        if (i.startsWith('spotify')) {
+        if (i.startsWith(cookie)) {
             return i.split('=')[1]
         }
     }
@@ -45,8 +45,8 @@ async function getUser() {
         document.getElementById('link').href = window.location.href
     }
     let config = {headers: {'Content-Type' : 'application/json','Authorisation' : 'Bearer 0000000-00000000-0000000'}}
-    if(getAuth() !== false) {
-        let r = await axios.post('https://npbe.ramzihijjawi.me/me', {'cookie': `${getAuth()}`}, config)
+    if(getAuth('spotify') !== false) {
+        let r = await axios.post('https://npbe.ramzihijjawi.me/me', {'cookie': `${getAuth('spotify')}`}, config)
         if (r.data.hasOwnProperty('error')) {
             //document.cookie = "spotify=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
             alert(r.data.error)
@@ -71,9 +71,9 @@ async function getUser() {
 }
 
 document.getElementById('makeroom').addEventListener('click', async function makeroom() {
-    if (getAuth() !== false){
-        let m = await axios.post('https://npbe.ramzihijjawi.me/me', {'cookie': `${getAuth()}`})
-        socket.emit('make_room', {'cookie': `${getAuth()}`, 'username':m.data.display_name})
+    if (getAuth('spotify') !== false){
+        let m = await axios.post('https://npbe.ramzihijjawi.me/me', {'cookie': `${getAuth('spotify')}`})
+        socket.emit('make_room', {'cookie': `${getAuth('spotify')}`, 'username':m.data.display_name})
         socket.on('room_created', (data) => {
             document.cookie = data.set
             window.open(data.redir)

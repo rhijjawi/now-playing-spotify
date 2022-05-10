@@ -14,8 +14,8 @@ socket.emit('join', {'room':document.location.search.split('=')[1]})
 async function pause(uri) {
     if (spotify == true) {
       if (stillPaused == false) {
-        if (getAuth() == undefined){
-        let data = {'session': `${getAuth()}`, 'uris':uri}
+        if (getAuth('spotify') == undefined){
+        let data = {'session': `${getAuth('spotify')}`, 'uris':uri}
         await axios.put('https://npbe.ramzihijjawi.me/pause', data, config)
         stillPaused = true;
         playing = false;
@@ -26,8 +26,8 @@ async function play(uri) {
     if (spotify == true) {
       stillPaused = false;
         if (playing == false) {
-          if (getAuth() !== false){
-              let data = {'session': `${getAuth()}`, 'uris':uri}
+          if (getAuth('spotify') !== false){
+              let data = {'session': `${getAuth('spotify')}`, 'uris':uri}
               await axios.put('https://npbe.ramzihijjawi.me/play', data, config)
               playing = true;
   }}}}
@@ -96,12 +96,12 @@ socket.on('room_music', async (data) => {
     bar.style.width = `${(getDataJSON.progress_ms/getDataJSON.item.duration_ms)*100}%`
 
     document.getElementById('link').href = window.location.href;
-    if (getAuth() !== false) {}
+    if (getAuth('spotify') !== false) {}
     else {spotify = true}
     if (spotify == true) {
     if ((currentSong == getDataJSON.item.uri) == false) {
-      if (getAuth() == undefined){
-        let data = {"session": `${getAuth()}`, "uris": [getDataJSON.item.uri], "offset": {"position": 0},"position_ms": getDataJSON.progress_ms}
+      if (getAuth('spotify') == undefined){
+        let data = {"session": `${getAuth('spotify')}`, "uris": [getDataJSON.item.uri], "offset": {"position": 0},"position_ms": getDataJSON.progress_ms}
         await axios.put('https://npbe.ramzihijjawi.me/song', data, config)
     }}
     else {}
@@ -111,5 +111,5 @@ socket.on('room_music', async (data) => {
   
   
 }})
-const interval = setInterval(async function() {socket.emit('keep_alive', {'room':document.location.search.split('=')[1], 'cookie':getAuth()})}, 1000);
+const interval = setInterval(async function() {if (getAuth(document.location.search.split('=')[1] == 'isHost')) {socket.emit('keep_alive', {'room':document.location.search.split('=')[1], 'cookie':getAuth('spotify')})}}, 1000);
 

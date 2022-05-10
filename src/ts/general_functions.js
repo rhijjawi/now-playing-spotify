@@ -36,7 +36,7 @@ async function getUser() {
         document.getElementById('link').href = window.location.href
     }
     let config = {headers: {'Content-Type' : 'application/json','Authorisation' : 'Bearer 0000000-00000000-0000000'}}
-    if(document.cookie.split(document.cookie.split('spotify=')[1] !== undefined)) {
+    if(document.cookie.split(document.cookie.split('spotify='))[1] !== undefined) {
         let r = await axios.post('https://npbe.ramzihijjawi.me/me', {'cookie': `${document.cookie.split('spotify=')[1].split(';')[0]}`}, config)
         if (r.data.hasOwnProperty('error')) {
             document.cookie = "spotify=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";

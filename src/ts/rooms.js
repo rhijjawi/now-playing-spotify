@@ -107,7 +107,5 @@ socket.on('room_music', async (data) => {
   
   
 }})
-const interval = setInterval(async function() {
-  socket.emit('keep_alive', {'room':document.location.search.split('=')[1], 'cookie':getAuth()})
-}, 1000);
+const interval = setInterval(async function() {socket.emit('keep_alive', {'room':document.location.search.split('=')[1], 'cookie':getAuth()})}, 1000);
 

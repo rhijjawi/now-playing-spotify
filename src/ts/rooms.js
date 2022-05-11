@@ -32,8 +32,12 @@ async function play(uri) {
               playing = true;
   }}}}
 
-socket.on('disconnect', ()=>{socket.emit('join', {'room':document.location.search.split('=')[1]})})
+socket.on('disconnect', ()=>{
+  socket.emit('join', {'room':document.location.search.split('=')[1]})
+  $('#indicator').style = 'dot-r'
+})
 socket.on('room_music', async (data) => {
+  $('#indicator').style = 'dot-g'
   let getDataJSON = data
   if(getDataJSON.hasOwnProperty('error')){
     if (getDataJSON.error == 'room_not_found') {changeIfChanged($('#title'), `<a>Room not found</a>`)}

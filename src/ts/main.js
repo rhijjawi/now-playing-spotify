@@ -3,7 +3,8 @@ var socket = io('https://npbe.ramzihijjawi.me', {closeOnBeforeunload:false});
 let bar = $('#progressBar');
 let spotify = false;
 let config = {headers: {'Content-Type' : 'application/json','Authorisation' : 'Bearer 0000000-00000000-0000000'}}
-let stillPaused = playing = null;
+let stillPaused = null;
+let playing = null;
 let currentSong = '';
 let playlists = await axios.get('https://npbe.ramzihijjawi.me/playlist');
 playlists = playlists.data

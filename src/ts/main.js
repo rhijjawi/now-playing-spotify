@@ -1,16 +1,11 @@
 let $ = (selector) => document.querySelector(selector);
 var socket = io('https://npbe.ramzihijjawi.me', {closeOnBeforeunload:false});
-//let getData = await axios.get('https://npbe.ramzihijjawi.me/');
-//let getDataJSON = getData.data
-let bar = document.getElementById('progressBar');
-let session_token;
+let bar = $('#progressBar');
 let spotify = false;
 let config = {headers: {'Content-Type' : 'application/json','Authorisation' : 'Bearer 0000000-00000000-0000000'}}
-let stillPaused = null;
+let stillPaused = playling = null;
 let currentSong = '';
-let playing = null;
-let playlists = await axios.get('https://npbe.ramzihijjawi.me/playlist')
-//import {changeIfChanged, changeImageIfChanged, addClass, removeClass} from "./general_functions.js"
+let playlists = await axios.get('https://npbe.ramzihijjawi.me/playlist');
 playlists = playlists.data
 
 async function pause(uri) {
@@ -18,8 +13,8 @@ async function pause(uri) {
     if (listenAlong() == true) {
       if (stillPaused == false) {
         if (getAuth('spotify') !== false){
-        let data = {'session': `${getAuth('spotify')}`, 'uris':uri}
-        await axios.put('https://npbe.ramzihijjawi.me/pause', data, config)
+        let data = {'session': `${getAuth('spotify')}`, 'uris':uri};
+        await axios.put('https://npbe.ramzihijjawi.me/pause', data, config);
         stillPaused = true;
         playing = false;
       }
@@ -29,37 +24,44 @@ async function play(uri) {
     if (listenAlong() == true) {
       if (playing == false) {
         if (getAuth('spotify') !== false){
-          let data = {'session': `${getAuth('spotify')}`, 'uris':uri}
-          await axios.put('https://npbe.ramzihijjawi.me/play', data, config)
+          let data = {'session': `${getAuth('spotify')}`, 'uris':uri};
+          await axios.put('https://npbe.ramzihijjawi.me/play', data, config);
           playing = true;
           stillPaused = false;
-  }}}}}
+}}}}}
 
-socket.emit('join', {'room':'main'})
+socket.emit('join', {'room':'main'});
 socket.on('disconnect', ()=>{
-  socket.emit('join', {'room':'main'})
-  $('#indicator').className = 'dot-r'
+  socket.emit('join', {'room':'main'});
+  $('#indicator').className = 'dot-r';
 })
 socket.on('music', async (data) => {
-  $('#indicator').className = 'dot-g'
-  let getDataJSON = data
+  $('#indicator').className = 'dot-g';
+  let getDataJSON = data;
   if(getDataJSON.hasOwnProperty('error')){
-    if (getDataJSON.error == 'room_not_found') {changeIfChanged($('#title'), `<a>Room not found</a>`)}
-    else {changeIfChanged($('#title'), `<a>${getDataJSON.error}</a>`)}
+    if (getDataJSON.error == 'room_not_found') {changeIfChanged($('#title'), `<a>Room not found</a>`);}
+    else {changeIfChanged($('#title'), `<a>${getDataJSON.error}</a>`);}
     changeIfChanged($('#status'), '')
-    $('#explicit_tag').hidden = true
     changeIfChanged($('#album'), '')
     changeIfChanged($('#artist'),'')
     changeImageIfChanged($('#album-art'), './sad.png')
+    addClass($('#album-art'), 'no-spin')
+    removeClass($('#album-art'), 'spin')
+    removeClass($('#album-art'), 'pause-spin')
+    $('#explicit_tag').hidden = true
+    $('#la_toggle').disabled = true
     $('#la_toggle').parentElement.style.display='none'
   }
   else if (getDataJSON.hasOwnProperty('status')){
     if (getDataJSON.status == 'not_playing') {changeIfChanged($('#title'), `<a>Not Playing</a>`)}
     changeIfChanged($('#status'), '')
-    $('#explicit_tag').hidden = true
     changeIfChanged($('#album'), '')
     changeIfChanged($('#artist'),'')
     changeImageIfChanged($('#album-art'), './sad.png')
+    addClass($('#album-art'), 'no-spin')
+    removeClass($('#album-art'), 'spin')
+    removeClass($('#album-art'), 'pause-spin')
+    $('#explicit_tag').hidden = true
     $('#la_toggle').disabled = true
     $('#la_toggle').parentElement.style.display='none'
   }

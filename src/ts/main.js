@@ -52,6 +52,7 @@ socket.on('music', async (data) => {
     $('#explicit_tag').hidden = true
     $('#la_toggle').disabled = true
     $('#la_toggle').parentElement.style.display='none'
+    $('#progressBar').style.width= '0%'
   }
   else if (getDataJSON.hasOwnProperty('status')){
     if (getDataJSON.status == 'not_playing') {changeIfChanged($('#title'), `<a>Not Playing</a>`)}
@@ -65,6 +66,7 @@ socket.on('music', async (data) => {
     $('#explicit_tag').hidden = true
     $('#la_toggle').disabled = true
     $('#la_toggle').parentElement.style.display='none'
+    $('#progressBar').style.width= '0%'
   }
   else {
     $('#la_toggle').parentElement.style.display='inline-block'

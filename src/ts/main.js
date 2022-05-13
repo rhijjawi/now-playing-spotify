@@ -7,7 +7,7 @@ let stillPaused = null;
 let playing = null;
 let currentSong = '';
 let playlists = await axios.get('https://npbe.ramzihijjawi.me/playlist');
-playlists = playlists.data
+playlists = playlists.data;
 
 async function pause(uri) {
   if (spotify == true) {

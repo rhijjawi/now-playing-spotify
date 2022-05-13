@@ -37,6 +37,7 @@ socket.on('disconnect', ()=>{
   $('#indicator').className = 'dot-r'
 })
 socket.on('room_music', async (data) => {
+  console.log('test')
   $('#indicator').className = 'dot-g'
   let getDataJSON = data
   if(getDataJSON.hasOwnProperty('error')){

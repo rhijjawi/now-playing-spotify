@@ -61,7 +61,12 @@ socket.on('room_music', async (data) => {
     $('#la_toggle').parentElement.style.display='none'
   }
   else {
-    $('#la_toggle').parentElement.style.display='inline-block'
+    if (document.location.search.split('=')[1] !== undefined){
+      if (getAuth(document.location.search.split('=')[1]) == atob('aXNIb3N0')) {
+          $('#la_toggle').parentElement.style.display='none';}}
+    else {
+      $('#la_toggle').parentElement.style.display='inline-block'
+    }
     changeIfChanged($('#status'), '')
     //let volume = `@ ${getDataJSON.device.volume_percent}% volume`
     //let playingStatement = `Playing on <span class="bold">${getDataJSON['device']['name']}</span> ${volume}`

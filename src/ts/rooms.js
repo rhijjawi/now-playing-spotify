@@ -43,7 +43,7 @@ socket.on('room_music', async (data) => {
     if (getDataJSON.error == 'room_not_found') {changeIfChanged($('#title'), `<a>Room not found</a>`)}
     else {changeIfChanged($('#title'), `<a>${getDataJSON.error}</a>`)}
     changeIfChanged($('#status'), '')
-    changeIfChanged($('#link_cont'), '')
+    //changeIfChanged($('#link_cont'), '')
     changeIfChanged($('#album'), '')
     changeIfChanged($('#artist'),'')
     changeImageIfChanged($('#album-art'), './sad.png')
@@ -54,7 +54,7 @@ socket.on('room_music', async (data) => {
     changeIfChanged($('#title'), `<a>Not Playing</a>`)}
     else {changeIfChanged($('#title'), getDataJSON.status)}
     changeIfChanged($('#status'), '')
-    changeIfChanged($('#link_cont'), '')
+    //changeIfChanged($('#link_cont'), '')
     changeIfChanged($('#album'), '')
     changeIfChanged($('#artist'),'')
     changeImageIfChanged($('#album-art'), './sad.png')

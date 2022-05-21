@@ -108,3 +108,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 document.addEventListener('DOMContentLoaded', getUser());
+document.addEventListener('DOMContentLoaded', async () => {
+    await setTitle()
+})

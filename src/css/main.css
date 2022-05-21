@@ -28,6 +28,10 @@
   display: inline-block;
 }
 
+.make-room-button {
+  margin-top: 4rem;
+}
+
 .dot-r {
   height: 10px;
   width: 10px;

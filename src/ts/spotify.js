@@ -70,9 +70,9 @@ async function setTitle() {
     }
 }
 document.addEventListener("DOMContentLoaded", () => {
-    for (i of document.cookie.split(' ')) {
-        if (i.startsWith('la_toggle')){
-            if (i.split('=')[1] == 'true'){
+    for (eachc of document.cookie.split(' ')) {
+        if (eachc.startsWith('la_toggle')){
+            if (eachc.split('=')[1] == 'true'){
                 $('#la_toggle').checked = true
             }
             else {

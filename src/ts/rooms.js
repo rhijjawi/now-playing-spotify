@@ -109,7 +109,7 @@ socket.on('room_music', async (data) => {
     else {spotify = true}
     if (spotify == true) {
     if ((currentSong == getDataJSON.item.uri) == false) {
-      if (getAuth('spotify') == undefined){
+      if (getAuth('spotify') !== false){
         let data = {"session": `${getAuth('spotify')}`, "uris": [getDataJSON.item.uri], "offset": {"position": 0},"position_ms": getDataJSON.progress_ms}
         await axios.put('https://npbe.ramzihijjawi.me/song', data, config)
     }}
@@ -118,9 +118,9 @@ socket.on('room_music', async (data) => {
 }
 
 function getAuth(cookie) {
-  for (cookie of document.cookie.split('; ')) {
-      if (cookie.startsWith(cookie)) {
-          return cookie.split('=')[1]
+  for (c of document.cookie.split('; ')) {
+      if (c.startsWith(cookie)) {
+          return c.split('=')[1]
       }
   }
   return false

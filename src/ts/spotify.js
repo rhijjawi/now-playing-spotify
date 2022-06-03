@@ -7,9 +7,9 @@ function listenAlong() {
 }
 
 function getAuth(cookie) {
-    for (i of document.cookie.split('; ')) {
-        if (i.startsWith(cookie)) {
-            return i.split('=')[1]
+    for (cookie of document.cookie.split('; ')) {
+        if (cookie.startsWith(cookie)) {
+            return cookie.split('=')[1]
         }
     }
     return false

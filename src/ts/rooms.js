@@ -117,7 +117,15 @@ socket.on('room_music', async (data) => {
     currentSong = getDataJSON.item.uri
 }
 
-  
+function getAuth(cookie) {
+  for (cookie of document.cookie.split('; ')) {
+      if (cookie.startsWith(cookie)) {
+          return cookie.split('=')[1]
+      }
+  }
+  return false
+}
+
   
 }})
 const interval = setInterval(async function() {if (getAuth(document.location.search.split('=')[1]) == 'isHost') {socket.emit('keep_alive', {'room':document.location.search.split('=')[1], 'cookie':getAuth('spotify')})}}, 1000);

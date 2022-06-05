@@ -1,5 +1,6 @@
 let i = null;
 let eachcookie = null;
+let $ = (selector) => document.querySelector(selector);
 
 function rmEventListener(func) {
     document.getElementById('prep_btn').removeEventListener('click', func)

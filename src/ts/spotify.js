@@ -63,26 +63,21 @@ document.getElementById('la_toggle').addEventListener('click', async function() 
     document.cookie = `la_toggle=${document.getElementById('la_toggle').checked}`;
 });
 
-async function setTitle() {
-    let n = await axios.get(`https://npbe.ramzihijjawi.me/room${document.location.search}`)
-    if (n.headers["host"] !== undefined) {
-        document.title = `${n.headers["host"]}'s Spotify Room`;
-    }
-}
+
 document.addEventListener("DOMContentLoaded", () => {
     for (eachc of document.cookie.split(' ')) {
         if (eachc.startsWith('la_toggle')){
             if (eachc.split('=')[1] == 'true'){
                 $('#la_toggle').checked = true
+                return
             }
             else {
                 $('#la_toggle').checked = false
+                return
             }
         }
 
     }
+    document.cookie = `la_toggle=false`
 });
 document.addEventListener('DOMContentLoaded', getUser());
-document.addEventListener('DOMContentLoaded', async () => {
-    await setTitle()
-})

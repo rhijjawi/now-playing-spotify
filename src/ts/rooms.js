@@ -125,7 +125,15 @@ function getAuth(cookie) {
   }
   return false
 }
-
+async function setTitle() {
+  let n = await axios.get(`https://npbe.ramzihijjawi.me/room${document.location.search}`)
+  if (n.headers["host"] !== undefined) {
+      document.title = `${n.headers["host"]}'s Spotify Room`;
+  }
+}
+document.addEventListener('DOMContentLoaded', async () => {
+  await setTitle()
+})
   
 }})
 const interval = setInterval(async function() {if (getAuth(document.location.search.split('=')[1]) == 'isHost') {socket.emit('keep_alive', {'room':document.location.search.split('=')[1], 'cookie':getAuth('spotify')})}}, 1000);

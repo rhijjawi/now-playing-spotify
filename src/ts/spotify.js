@@ -11,8 +11,8 @@ function listenAlong() {
 
 function getAuth(cookie) {
     for (i of document.cookie.split('; ')) {
-        if (c.startsWith(cookie)) {
-            return c.split('=')[1]
+        if (i.startsWith(cookie)) {
+            return i.split('=')[1]
         }
     }
     return false

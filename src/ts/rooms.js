@@ -8,6 +8,8 @@ let config = {headers: {'Content-Type' : 'application/json','Authorisation' : 'B
 let stillPaused = false;
 let playing = false;
 let currentSong = '';
+let c = null;
+
 
 socket.emit('join', {'room':document.location.search.split('=')[1]})
 

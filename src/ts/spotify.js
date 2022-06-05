@@ -1,3 +1,6 @@
+let i = null;
+let eachcookie = null;
+
 function rmEventListener(func) {
     document.getElementById('prep_btn').removeEventListener('click', func)
 }
@@ -7,7 +10,7 @@ function listenAlong() {
 }
 
 function getAuth(cookie) {
-    for (c of document.cookie.split('; ')) {
+    for (i of document.cookie.split('; ')) {
         if (c.startsWith(cookie)) {
             return c.split('=')[1]
         }
@@ -65,9 +68,9 @@ document.getElementById('la_toggle').addEventListener('click', async function() 
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    for (eachc of document.cookie.split(' ')) {
-        if (eachc.startsWith('la_toggle')){
-            if (eachc.split('=')[1] == 'true'){
+    for (eachcookie of document.cookie.split(' ')) {
+        if (eachcookie.startsWith('la_toggle')){
+            if (eachcookie.split('=')[1] == 'true'){
                 $('#la_toggle').checked = true
                 return
             }

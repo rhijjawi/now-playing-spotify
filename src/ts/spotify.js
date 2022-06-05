@@ -7,8 +7,8 @@ function listenAlong() {
 }
 
 function getAuth(cookie) {
-    for (cookie of document.cookie.split('; ')) {
-        if (cookie.startsWith(cookie)) {
+    for (c of document.cookie.split('; ')) {
+        if (c.startsWith(cookie)) {
             return cookie.split('=')[1]
         }
     }
